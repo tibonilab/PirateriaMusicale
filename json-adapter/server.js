@@ -20,7 +20,7 @@ const path = devMode ? '../' : './';
 
 // import the dataset
 const data = require(`${path}dataset/index.json`);
-const fulltext = require(`${path}dataset/KbFulltext.json`);
+// const fulltext = require(`${path}dataset/KbFulltext.json`);
 
 app.get('/api/browse', (req, res) => {
 
