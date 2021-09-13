@@ -25,9 +25,9 @@ import { t } from '../i18n';
 // ];
 
 const indexes = () => [
-    { value: 'Composers', label: 'Composers' },
-    { value: 'Dates', label: 'Dates' },
-    { value: 'Feasts', label: 'Feasts' },
+    { value: 'Names', label: 'Names' },
+    // { value: 'Dates', label: 'Dates' },
+    // { value: 'Feasts', label: 'Feasts' },
 ];
 
 const JsonBrowse = () => {
@@ -73,47 +73,27 @@ const JsonBrowse = () => {
                     </FlexWrapper>
                     : browseResults && browseResults/* .slice(0, 3) */.map((e, key) => (
                         <React.Fragment key={e.name}>
-                            <Collapsible key={e.name} header={(<h3 className="collapsible-header-caption" style={{ borderBottom: '1px solid #e8e8e8', display: 'block', width: '100%', paddingBottom: '.5em' }}>
-                                {e.name}
-                            </h3>)}>
-                                {/* <h3 className="collapsible-header-caption" style={{ borderBottom: '1px solid #e8e8e8', display: 'block', width: '100%', paddingBottom: '.5em' }}>
-                                {e.name}
-                            </h3> */}
-                                {e.group && Array.isArray(e.group) && e.group.map(linked => (
-                                    <Collapsible
-                                        key={linked.name}
-                                        header={(<h4 className="collapsible-header-caption" style={{ borderBottom: '1px solid #e8e8e8', display: 'block', width: '100%', paddingBottom: '.5em' }}>{linked.name}</h4>)}
-                                        onClickHandler={collapsed => !collapsed && loadRelated({ index: selectedIndex, params: { key, name: linked.name } })}
-                                    >
-                                        {
-                                            isLoadingRelated(key, linked.name) && <div><div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                                                <h4>Loading data, please wait..</h4></div>
-                                        }
-                                        {
-                                            (!isLoadingRelated(key, linked.name) && related[`${key}_${linked.name}`] && Array.isArray(related[`${key}_${linked.name}`])) && related[`${key}_${linked.name}`].map(data => {
-                                                return <div key={data.name}>{data.name}
-                                                    <ul>
-                                                        {data.link && Array.isArray(data.link) && data.link.map((e, index) => <li key={index}>{e.label} <Link to={`/book#${e.target.split(';')[1]}`}>{t('search.actions.go')}</Link></li>)}
-                                                        {data.link && !Array.isArray(data.link) && <li>{data.link.label} <Link to={`/book#${data.link.target.split(';')[1]}`}>{t('search.actions.go')}</Link></li>}
-                                                    </ul>
-                                                </div>;
-                                            })
-                                        }
-                                        {
-                                            (!isLoadingRelated(key, linked.name) && related[`${key}_${linked.name}`] && !Array.isArray(related[`${key}_${linked.name}`])) &&
-                                            (
-                                                <div key={related[`${key}_${linked.name}`].name}>{related[`${key}_${linked.name}`].name}
-                                                    <ul>
-                                                        {related[`${key}_${linked.name}`].link && Array.isArray(related[`${key}_${linked.name}`].link) && related[`${key}_${linked.name}`].link.map((e, index) => <li key={index}>{e.label} <Link target="_blank" to={`/book#${e.target.split(';')[1]}`}>{t('search.actions.go')}</Link></li>)}
-                                                        {related[`${key}_${linked.name}`].link && !Array.isArray(related[`${key}_${linked.name}`].link) && <li>{related[`${key}_${linked.name}`].link.label} <Link target="_blank" to={`/book#${related[`${key}_${linked.name}`].link.target.split(';')[1]}`}>{t('search.actions.go')}</Link></li>}
-                                                    </ul>
-                                                </div>
+                            <Collapsible
+                                key={key}
+                                header={(<h3 className="collapsible-header-caption" style={{ borderBottom: '1px solid #e8e8e8', display: 'block', width: '100%', paddingBottom: '.5em' }}>{e.name}</h3>)}
+                                onClickHandler={collapsed => !collapsed && loadRelated({ index: selectedIndex, params: { key, name: e.name } })}>
+
+                                {
+                                    related[`${key}_${e.name}`] && isLoadingRelated(key, e.name) && <div><div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                                        <h4>Loading data, please wait..</h4></div>
+                                }
+
+                                {
+                                    related[`${key}_${e.name}`] && (!isLoadingRelated(key, e.name) && related[`${key}_${e.name}`] && Array.isArray(related[`${key}_${e.name}`])) && <div><ul>{
+                                        related[`${key}_${e.name}`].map((data, index) => {
+                                            console.log(data);
+
+                                            return (
+                                                <li key={index}>{data.label} <Link to={`/book#${data.target}`}>Go</Link></li>
                                             )
 
-                                        }
-
-                                    </Collapsible>
-                                ))}
+                                        })}</ul></div>
+                                }
                             </Collapsible>
 
                         </React.Fragment>
