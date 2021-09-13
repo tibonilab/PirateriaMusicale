@@ -3,7 +3,7 @@ import { useStateWithSession } from '../service/serviceStorage';
 
 import CurstomContext from './customContext';
 
-const SESSION_PREFIX = 'Kapellmeisterbuch-CustomState';
+const SESSION_PREFIX = 'FlorianBassani-CustomState';
 
 import Json from '../model/Json';
 

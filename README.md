@@ -15,7 +15,7 @@ Pull the repository and make sure you have the basic components installed on you
 
 ```bash
 sudo apt install npm gulp
-git clone https://github.com/rism-digital/PirateriaMusicale
+git clone https://github.com/tibonilab/PirateriaMusicale
 cd PirateriaMusicale
 npm install
 ```

@@ -1,7 +1,7 @@
 {
-  "name": "kapellmeisterbuch",
+  "name": "bassani",
   "version": "0.0.1",
-  "description": "RISM Kapellmeisterbuch application",
+  "description": "RISM Florian Bassani - Pirateria Musicale application",
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rism-digital/kapellmeisterbuch.git"
+    "url": "git+https://github.com/tibonilab/PirateriaMusicale.git"
   },
   "author": "",
   "license": "ISC",
