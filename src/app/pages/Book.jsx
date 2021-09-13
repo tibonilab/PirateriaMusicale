@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import KbTagged from '../../../dataset/KbTagged.html';
+import KbTagged from '../../../dataset/output.html';
 
 import Template from '../components/template/Template.jsx';
 
@@ -44,7 +44,7 @@ const TestHtml = () => {
     const [pageOptions, setPageOptions] = useState([]);
     const [isMobile, setIsMobile] = useState(window.outerWidth < 1440);
     const [leftSideSize, setLeftSideSize] = useState(window.outerWidth >= 1440 ? 60 : 100);
-    const [divaVisible, setDivaVisible] = useState(!isMobile);
+    const [divaVisible, setDivaVisible] = useState(0);//!isMobile);
     const [initialPageURI, setInitialPageURI] = useState();
 
     const onHashChange = () => {
@@ -138,9 +138,9 @@ const TestHtml = () => {
         }
     }, [didMount]);
 
-    useEffect(() => {
-        setDivaVisible(!isMobile);
-    }, [isMobile]);
+    // useEffect(() => {
+    //     setDivaVisible(!isMobile);
+    // }, [isMobile]);
 
 
     const generateSelectPageOptions = (pageCount) => {
@@ -172,11 +172,11 @@ const TestHtml = () => {
                         dangerouslySetInnerHTML={{ __html: KbTagged }}
                     />
 
-                    <a href="#" style={{ position: 'fixed', bottom: '26px', right: '1em', zIndex: 1 }} onClick={e => { e && e.preventDefault(); setDivaVisible(!divaVisible); }}>
+                    {/* <a href="#" style={{ position: 'fixed', bottom: '26px', right: '1em', zIndex: 1 }} onClick={e => { e && e.preventDefault(); setDivaVisible(!divaVisible); }}>
                         {divaVisible ? 'Hide Diva' : 'Show Diva'}
-                    </a>
+                    </a> */}
 
-                    <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
+                    {/* <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
 
 
                         <FlexWrapper style={{ width: '250px' }} className="nav">
@@ -204,10 +204,10 @@ const TestHtml = () => {
                             />
 
                         </FlexWrapper>
-                    </FlexWrapper>
+                    </FlexWrapper> */}
                 </div>
 
-                <div style={divaWrapperStyle}>
+                {/* <div style={divaWrapperStyle}>
 
                     <Diva
                         manifest="CH_E_925_03.json"
@@ -221,7 +221,7 @@ const TestHtml = () => {
                         enableLinkIcon
                         enablePlugins
                     />
-                </div>
+                </div> */}
             </div>
         </Template >
     );
