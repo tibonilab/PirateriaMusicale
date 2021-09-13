@@ -19,7 +19,7 @@ const devMode = args.env && args.env == 'dev';
 const path = devMode ? '../' : './';
 
 // import the dataset
-const data = require(`${path}dataset/KbIndex.json`);
+const data = require(`${path}dataset/index.json`);
 const fulltext = require(`${path}dataset/KbFulltext.json`);
 
 app.get('/api/browse', (req, res) => {
@@ -34,8 +34,8 @@ app.get('/api/browse', (req, res) => {
 
     // if related data is passed we are going to return only related data
     if (params) {
-        const group = data.index.group.find(group => group.name === index).group[params.key].group;
-        const dataset = group.find(group => group.name === params.name).group;
+        const group = data.index.group.find(group => group.name === index).group;
+        const dataset = group.find(group => group.name === params.name).link;
 
         if (devMode) {
             console.log('[RESPONSE_PAYLOAD]');
@@ -51,9 +51,7 @@ app.get('/api/browse', (req, res) => {
         .find(group => group.name === index).group
         .map(e => ({
             name: e.name,
-            group: e.group
-                ? Array.isArray(e.group) ? e.group.map(group => ({ name: group.name })) : e.group
-                : {}
+            //link: e.link
         }));
 
     if (devMode) {
