@@ -42,6 +42,10 @@ const CustomState = props => {
                 setLoadingBrowse(false);
                 setBrowseError(true);
             }
+        }).catch(() => {
+            setBrowseResults([]);
+            setLoadingBrowse(false);
+            setBrowseError(true);
         });
     };
 
