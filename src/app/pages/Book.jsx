@@ -12,6 +12,8 @@ import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 
 import { useDidMount } from '../hooks/useDidMount';
 
+import './Book.scss';
+
 const anchorClickHandler = (id) => {
     const highlighted = document.getElementsByClassName('highlight');
 
@@ -35,6 +37,8 @@ const anchorClickHandler = (id) => {
     }
 
 };
+
+const countPages = () => document.getElementsByClassName('pagebreak').length;
 
 const TestHtml = () => {
 
@@ -95,12 +99,19 @@ const TestHtml = () => {
         }
 
         const scrollTop = e.target.scrollTop;
+
+        if (scrollTop < 100) {
+            setCurrentPage(0);
+            return;
+        }
+
         const boxHeight = e.target.offsetHeight;
 
         const pagebreaks = document.getElementsByClassName('pagebreak');
 
         let min = 9999999999;
         let page;
+        let currentPage = 0;
 
         for (let item of pagebreaks) {
 
@@ -109,10 +120,14 @@ const TestHtml = () => {
             if (min >= offset) {
                 min = offset;
                 page = item;
+
+                currentPage++;
             }
         }
 
-        setCurrentPageURI(`https://iiif.rism.digital/image/ch/CH_E_925_03/pyr_${page.id}.tif`);
+        console.log(page.id, currentPage);
+
+        setCurrentPage(currentPage);
     };
 
     const updateLayout = () => {
@@ -135,95 +150,87 @@ const TestHtml = () => {
     useEffect(() => {
         if (!didMount) {
             setCurrentHashByWindowHash();
+            generateSelectPageOptions(countPages());
         }
     }, [didMount]);
 
-    // useEffect(() => {
-    //     setDivaVisible(!isMobile);
-    // }, [isMobile]);
-
-
     const generateSelectPageOptions = (pageCount) => {
         const options = [];
-        for (let k = 0; k < pageCount; k++) {
+        for (let k = 0; k <= pageCount; k++) {
             options.push({ value: k, label: k == 0 ? 'Cover' : k });
         }
 
         setPageOptions(options);
     };
 
-    const divaWrapperStyle = isMobile
-        ? {
-            width: 'calc(100% - 75px)', padding: '1em', right: divaVisible ? 0 : '-100%', zIndex: 1, position: 'fixed', transition: 'right 1s ease-in-out', background: '#fff'
+    const navigateTo = page => {
+        const pages = document.getElementsByClassName('pagebreak');
+
+        if (pages[page - 1]) {
+            anchorClickHandler(pages[page - 1].id);
+            setCurrentPage(page);
+        } else {
+            anchorClickHandler('top');
+            setCurrentPage(0);
         }
-        : {
-            width: '40%', padding: '1em', marginRight: '-100%'
-        };
+    };
+
 
     return (
         <Template>
-            <div style={{ display: 'flex', maxWidth: 'calc(100% - 75px)', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -3em' }}>
-                <div style={{ width: divaVisible ? `${leftSideSize}%` : '100%', height: '100%', overflowY: 'auto', borderRight: '2px solid #e3e3e3', transition: 'width 1s ease-in-out' }}>
+            <div style={{ display: 'flex', maxWidth: 'calc(100% - 75px)', width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
 
-                    <div
-                        id="scroller"
-                        onScroll={onScrollHtmlHandler}
-                        style={{ width: '100%', height: 'calc(100% - 70px)', overflowY: 'auto', paddingRight: '2em' }}
-                        dangerouslySetInnerHTML={{ __html: KbTagged }}
-                    />
+                <div
+                    id="scroller"
+                    onScroll={onScrollHtmlHandler}>
+                    <div>
+                        <div id="top">
 
-                    {/* <a href="#" style={{ position: 'fixed', bottom: '26px', right: '1em', zIndex: 1 }} onClick={e => { e && e.preventDefault(); setDivaVisible(!divaVisible); }}>
+                        </div>
+                        <div
+                            id="scroller-content"
+                            dangerouslySetInnerHTML={{ __html: KbTagged }}
+                        />
+                    </div>
+                </div>
+
+                {/* <a href="#" style={{ position: 'fixed', bottom: '26px', right: '1em', zIndex: 1 }} onClick={e => { e && e.preventDefault(); setDivaVisible(!divaVisible); }}>
                         {divaVisible ? 'Hide Diva' : 'Show Diva'}
                     </a> */}
 
-                    {/* <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
+                <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
 
 
-                        <FlexWrapper style={{ width: '250px' }} className="nav">
-                            <div style={{ marginTop: '-6px' }}>
-                                <label>Navigation</label>
-                                <FlexWrapper>
+                    <FlexWrapper style={{ width: '250px' }} className="nav">
+                        <div style={{ marginTop: '-6px' }}>
+                            <label>Navigation</label>
+                            <FlexWrapper>
 
-                                    <PrimaryButtonSmall disabled={currentPage === 0} action={() => setCurrentPage(currentPage - 1 || 0)}>
-                                        <span>&laquo;&nbsp;Prev</span>
-                                    </PrimaryButtonSmall>
+                                <PrimaryButtonSmall disabled={currentPage === 0} action={() => navigateTo(currentPage - 1 || 0)}>
+                                    <span>&laquo;&nbsp;Prev</span>
+                                </PrimaryButtonSmall>
 
-                                    <PrimaryButtonSmall style={{ marginLeft: '2px' }} disabled={currentPage === pageOptions.length - 1} action={() => setCurrentPage(currentPage + 1)}>
-                                        <span>Next&nbsp;&raquo;</span>
-                                    </PrimaryButtonSmall>
-                                </FlexWrapper>
-                            </div>
+                                <PrimaryButtonSmall style={{ marginLeft: '2px' }} disabled={currentPage === pageOptions.length - 1} action={() => navigateTo(currentPage + 1)}>
+                                    <span>Next&nbsp;&raquo;</span>
+                                </PrimaryButtonSmall>
+                            </FlexWrapper>
+                        </div>
 
-                            <Select
-                                label="Current page"
-                                style={{ marginLeft: '1em', marginTop: '-6px' }}
-                                inputStyle={{ padding: '.5rem' }}
-                                options={pageOptions}
-                                value={currentPage}
-                                onChangeHandler={value => setCurrentPage(parseInt(value, 10))}
-                            />
+                        <Select
+                            label="Current page"
+                            style={{ marginLeft: '1em', marginTop: '-6px' }}
+                            inputStyle={{ padding: '.5rem' }}
+                            options={pageOptions}
+                            value={currentPage}
+                            onChangeHandler={value => navigateTo(parseInt(value, 10))}
+                        />
 
-                        </FlexWrapper>
-                    </FlexWrapper> */}
-                </div>
-
-                {/* <div style={divaWrapperStyle}>
-
-                    <Diva
-                        manifest="CH_E_925_03.json"
-                        currentPage={currentPage}
-                        initialPage={currentPage}
-                        currentPageURI={currentPageURI}
-                        initialPageURI={initialPageURI}
-                        onLoad={count => { generateSelectPageOptions(count); }}
-                        onPageChangeHandler={setCurrentPage}
-                        onScrollHandler={index => anchorClickHandler(index.replace('https://iiif.rism.digital/image/ch/CH_E_925_03/pyr_', '').slice(0, -4))}
-                        enableLinkIcon
-                        enablePlugins
-                    />
-                </div> */}
+                    </FlexWrapper>
+                </FlexWrapper>
             </div>
-        </Template >
+
+
+        </Template>
     );
 };
 

@@ -1,0 +1,35 @@
+#scroller {
+    overflow-y: auto;
+    height: calc(100% - 70px); 
+    width: 100%;
+    background: #f4f5f6;
+
+    &-content {
+        max-width: 980px;
+        margin: auto;
+        padding: 0 2em;
+        background:#fff;
+        border: {
+            right: 1px solid #999;
+            left: 1px solid #999;
+        }
+
+        margin-top: 2em;
+        border-top: 1px solid #999;
+        margin-bottom: 2em;
+        border-bottom:1px solid #999;
+
+
+        .pagebreak {
+            background: #f4f5f6;
+            padding: 4em;
+            border: 1px solid #999;
+            margin: 4em -33px;
+            float:left;
+            text-align: center;
+            width: calc(100% + 66px);
+            border-left: 1px solid #f4f5f6;
+            border-right: 1px solid #f4f5f6;
+        }
+    }
+}
