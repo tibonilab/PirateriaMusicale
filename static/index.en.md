@@ -4,7 +4,7 @@
 	<img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/einsiedeln_c.png">
 </div-->
 
-coming soon...
+work in progress..
 
 <!--
 <p>The XSL stylesheet for generating the manuscript description page was kindly provided by the <a href="http://www.e-codices.ch" target="_blank">e-codices</a> project.</p>
