@@ -16,8 +16,9 @@ const CustomState = props => {
     const [loadingSearch, setLoadingSearch] = useState(false);
     const [loadingRelated, setLoadingRelated] = useState(false);
 
-    const [related, setRelated] = useState([]);
+    const [browseError, setBrowseError] = useState(false);
 
+    const [related, setRelated] = useState([]);
 
     const loadRelated = ({ index, params }) => {
         if (!related[`${params.key}_${params.name}`]) {
@@ -31,9 +32,16 @@ const CustomState = props => {
 
     const performBrowse = (index) => {
         setLoadingBrowse(true);
+        setBrowseError(false);
         Json.browse({ index }).then(r => {
-            setBrowseResults(r);
-            setLoadingBrowse(false);
+            if (Array.isArray(r)) {
+                setBrowseResults(r);
+                setLoadingBrowse(false);
+            } else {
+                setBrowseResults([]);
+                setLoadingBrowse(false);
+                setBrowseError(true);
+            }
         });
     };
 
@@ -56,7 +64,8 @@ const CustomState = props => {
                 loadingSearch,
                 related,
                 loadRelated,
-                loadingRelated
+                loadingRelated,
+                browseError
             }}
         >
             {props.children}
