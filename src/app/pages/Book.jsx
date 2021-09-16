@@ -23,7 +23,8 @@ const anchorClickHandler = (id) => {
 
     const element = document.getElementById(id);
 
-    const position = id.includes('d1e') ? 'center' : 'start';
+    // const position = id.includes('d1e') ? 'center' : 'start';
+    const position = 'center';
 
     if (element) {
         element.classList.add('highlight');
@@ -198,7 +199,7 @@ const TestHtml = () => {
                         {divaVisible ? 'Hide Diva' : 'Show Diva'}
                     </a> */}
 
-                <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
+                {/* <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
 
 
                     <FlexWrapper style={{ width: '250px' }} className="nav">
@@ -226,7 +227,7 @@ const TestHtml = () => {
                         />
 
                     </FlexWrapper>
-                </FlexWrapper>
+                </FlexWrapper> */}
             </div>
 
 
