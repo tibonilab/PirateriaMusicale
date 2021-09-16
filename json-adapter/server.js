@@ -20,7 +20,7 @@ const path = devMode ? '../' : './';
 
 // import the dataset
 const data = require(`${path}dataset/index.json`);
-// const fulltext = require(`${path}dataset/KbFulltext.json`);
+const fulltext = require(`${path}dataset/fulltext.json`);
 
 app.get('/api/browse', (req, res) => {
 
@@ -35,14 +35,16 @@ app.get('/api/browse', (req, res) => {
     // if related data is passed we are going to return only related data
     if (params) {
         const group = data.index.group.find(group => group.name === index).group;
-        const dataset = group.find(group => group.name === params.name).link;
+        const dataset = group.find(group => group.name === params.name);
+
+        const response = dataset.link ? dataset.link : dataset.group;
 
         if (devMode) {
             console.log('[RESPONSE_PAYLOAD]');
-            console.log(dataset);
+            console.log(response);
         }
 
-        res.send(dataset);
+        res.send(response);
         return;
     }
 
@@ -51,7 +53,7 @@ app.get('/api/browse', (req, res) => {
         .find(group => group.name === index).group
         .map(e => ({
             name: e.name,
-            //link: e.link
+            ...e.subtitle && { subtitle: e.subtitle }
         }));
 
     if (devMode) {
