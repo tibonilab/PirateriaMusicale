@@ -96,7 +96,7 @@ gulp.task('deploy-dataset', () => {
     };
 
     return gulp
-        .src('dataset/**', { base: './dataset', buffer: false })
+        .src('dataset/*.json', { base: './dataset', buffer: false })
         .pipe(sftp(opts));
 });
 
