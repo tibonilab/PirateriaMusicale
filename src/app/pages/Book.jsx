@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import KbTagged from '../../../dataset/output.html';
+import HTMLfile from '../../../dataset/output.html';
 
 import Template from '../components/template/Template.jsx';
 
@@ -38,6 +38,89 @@ const anchorClickHandler = (id) => {
     }
 
 };
+
+
+/**
+ * Perform zoom over focused image
+ * @param {Event} e 
+ */
+const performImgZoom = (e) => {
+
+    e && e.preventDefault();
+
+    const src = e.currentTarget.src;
+
+    const zoommer = document.getElementById('zoommer');
+    const zoommedImg = document.getElementById('zoommed-img');
+    const figure = document.getElementById('zoom');
+
+    zoommedImg.src = src;
+    figure.style.backgroundImage = `url("${src}")`;
+
+    zoommedImg.addEventListener('load', (e) => {
+
+        const img = e.currentTarget;
+
+        figure.style.width = img.width;
+        figure.style.height = img.height;
+
+        zoommer.style.display = 'flex';
+    }, false);
+
+
+    /**
+     * the actual zoom on the figure
+     * @param {Event} e 
+     */
+    const zoom = e => {
+        let x;
+        let y;
+        let offsetX;
+        let offsetY;
+
+        var zoomer = e.currentTarget;
+        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX;
+        e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX;
+        x = offsetX / zoomer.offsetWidth * 100;
+        y = offsetY / zoomer.offsetHeight * 100;
+        zoomer.style.backgroundPosition = x + '% ' + y + '%';
+    };
+
+    figure.addEventListener('mousemove', zoom, false);
+
+    zoommer.addEventListener('click', () => { zoommer.style.display = 'none'; }, false);
+
+};
+
+/**
+ * Check if image has "nozoom" class to enable zoom or not
+ * @param {Element} DOMnode 
+ * @returns {boolean}
+ */
+const hasZoom = DOMnode => {
+    if (DOMnode.className && DOMnode.className.split(' ').indexOf('nozoom') >= 0) return false;
+    if (DOMnode.parentNode) {
+        return hasZoom(DOMnode.parentNode);
+    }
+
+    return true;
+};
+
+/**
+ * Init event handlers on imported DOM
+ */
+const initEventHandlers = () => {
+    // init image zoom
+    const imgs = document.getElementsByClassName('inline');
+    Array.from(imgs).forEach(img => hasZoom(img) && img.addEventListener('click', performImgZoom, false));
+
+    // disable <a class="mergeformat">...</a> click
+    const mergeformats = document.getElementsByClassName('mergeformat');
+    Array.from(mergeformats).forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); }, false));
+
+};
+
+const parseHTML = () => HTMLfile.replaceAll('((REPLACE_WITH_MEDIA_ENDPOINT))', MEDIA_ENDPOINT);
 
 const countPages = () => document.getElementsByClassName('pagebreak').length;
 
@@ -152,6 +235,7 @@ const TestHtml = () => {
         if (!didMount) {
             setCurrentHashByWindowHash();
             generateSelectPageOptions(countPages());
+            initEventHandlers();
         }
     }, [didMount]);
 
@@ -176,24 +260,30 @@ const TestHtml = () => {
         }
     };
 
-
     return (
         <Template>
+            <div id="zoommer">
+                <figure id="zoom">
+                    <img id="zoommed-img" src="" />
+                </figure>
+            </div>
+
             <div style={{ display: 'flex', maxWidth: 'calc(100% - 75px)', width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
 
                 <div
                     id="scroller"
                     onScroll={onScrollHtmlHandler}>
                     <div>
-                        <div id="top">
+                        <div id="top" />
 
-                        </div>
                         <div
                             id="scroller-content"
-                            dangerouslySetInnerHTML={{ __html: KbTagged }}
+                            dangerouslySetInnerHTML={{ __html: parseHTML() }}
                         />
                     </div>
                 </div>
+
+
 
                 {/* <a href="#" style={{ position: 'fixed', bottom: '26px', right: '1em', zIndex: 1 }} onClick={e => { e && e.preventDefault(); setDivaVisible(!divaVisible); }}>
                         {divaVisible ? 'Hide Diva' : 'Show Diva'}
@@ -229,7 +319,6 @@ const TestHtml = () => {
                     </FlexWrapper>
                 </FlexWrapper> */}
             </div>
-
 
         </Template>
     );
