@@ -38,16 +38,96 @@
             display: none;
         }
 
-        img.inline {
-            margin: 1em auto 2.5em auto; 
-            display: block;
-            width: auto !important;
-            height: auto !important;
-            max-width: 100%;
+        .stdheader {
+            border: none;
         }
 
         .figure {
             border: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img.inline {
+                margin: 1.5em 1em 3em 1em; 
+            }
+
+            &:not(.nozoom) {
+                img.inline {
+                    display: inline-block;
+                    cursor: pointer;
+                    border: .5em solid white;
+                    box-shadow: 0 0 6px #bbb;
+                    transition: box-shadow .3s;
+        
+                    &:hover {
+                        box-shadow: 0 0 12px #bbb;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#zoommer {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.75);
+    padding: 1em;
+    z-index:100;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+
+    #zoom {
+        background-position: 50% 50%;
+        position: relative;
+        cursor: all-scroll;
+        max-width: 90%;
+        max-height: 95%;
+        border: 1em solid #fff;
+        pointer-events: none;
+
+        &:after {
+            position: absolute;
+            content: "CLOSE";
+            background: #fff;
+            right: -1em;
+            top: -3em;
+            height: 20px;
+            display: block;
+            width: auto;
+            color: #000;
+            cursor: pointer;
+            text-align: center;
+            padding: .5em;
+            pointer-events: all;
+        }
+    }
+
+    #zoommed-img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        pointer-events: all;
+        
+        opacity: 0;
+        // max-height: 100vh;
+        // border: 1em solid #fff;
+
+        transition: opacity .5s;
+        display: block;
+
+        &:hover {
+            opacity: 0;
         }
     }
 }
