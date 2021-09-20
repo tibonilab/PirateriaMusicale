@@ -16,8 +16,9 @@ import { PrimaryButton } from '../components/template/components/Buttons.jsx';
 import { t } from '../i18n';
 
 const indexes = () => [
-    { value: 'Composers', label: 'Compositori' },
-    { value: 'Toc', label: 'Sommario' },
+    { value: 'Composers5', label: 'Compositori e Autori - Depositi' },
+    { value: 'Composers6', label: 'Compositori e Autori - Cataloghi' },
+    // { value: 'Toc', label: 'Sommario' },
 ];
 
 const JsonBrowse = () => {
