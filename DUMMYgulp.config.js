@@ -26,6 +26,10 @@ const webApps = {
         ...serverAccess,
         remotePath: `${WEB_SERVER_BASE_PATH}/frontend/`
     },
+    media: {
+        ...serverAccess,
+        remotePath: `${WEB_SERVER_BASE_PATH}/frontend/media/`
+    },
     backend: {
         ...serverAccess,
         remotePath: `${WEB_SERVER_BASE_PATH}/backend/`

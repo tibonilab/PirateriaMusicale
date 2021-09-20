@@ -100,7 +100,20 @@ gulp.task('deploy-dataset', () => {
         .pipe(sftp(opts));
 });
 
-gulp.task('deploy', gulp.parallel('deploy-dataset', 'deploy-backend', 'deploy-frontend'));
+gulp.task('deploy-media', () => {
+    checkHost();
+
+    const opts = {
+        ...webApps.media,
+        log: gutil.log
+    };
+
+    return gulp
+        .src('media/**', { base: './media', buffer: false })
+        .pipe(sftp(opts));
+});
+
+gulp.task('deploy', gulp.parallel('deploy-dataset', 'deploy-backend', 'deploy-media', 'deploy-frontend'));
 
 gulp.task('webpack-dev-server', () => {
     const config = getWebpackConfig({
