@@ -78,7 +78,7 @@ Consider that deploying to the _staging_ env will generate a build in _developme
 
 
 ### Frontend configurations
-Since the data is all retrieved from backend application, it is necessary to configure API endpoints and the Manifest server in `webpack.config.js`.
+Since the data is all retrieved from backend application, it is necessary to configure API endpoints, the media path endpoint and the Manifest server in `webpack.config.js`.
 
 ```js
 DIVA_BASE_MANIFEST_SERVER: JSON.stringify('your-server/manifest-path'),
@@ -88,6 +88,12 @@ JSON_BASE_SERVER: : environment.dev
     : environment.production 
         ? JSON.stringify('production-backend-api-endpoint')
         : JSON.stringify('staging-backend-api-endpoint')
+
+MEDIA_ENDPOINT: : environment.dev
+    ? JSON.stringify('//localhost/path/to/media/')
+    : environment.production 
+        ? JSON.stringify('production-media-path-endpoint')
+        : JSON.stringify('staging-media-path-endpoint')
 ```
 
 ### Deployment tasks
@@ -109,6 +115,9 @@ npm run deploy:backend -- --env=<env>
 
 # Upload the dataset
 npm run deploy:dataset -- --env=<env>
+
+# Upload the media files
+npm run deploy:media -- --env=<env>
 ```
 
 ### Frontend Apache configuration
@@ -119,10 +128,10 @@ VirtualHost ip:80>
     ServerName my-host.com
 
     # Tell Apache where your app's code directory is
-    DocumentRoot /var/www/kapellmeisterbuck/frontend
+    DocumentRoot /var/www/PirateriaMusicale/frontend
 
     # Relax Apache security settings
-    <Directory /var/www/kapellmeisterbuck/frontend>
+    <Directory /var/www/PirateriaMusicale/frontend>
       Allow from all
       Options -MultiViews
       # Uncomment this if you're on Apache >= 2.4:
