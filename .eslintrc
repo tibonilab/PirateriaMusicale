@@ -50,6 +50,7 @@
         "DIVA_BASE_MANIFEST_SERVER": false,
         "JSON_BASE_SERVER": false,
         "PRODUCTION": false,
-        "DEBUG": false
+        "DEBUG": false,
+        "MEDIA_ENDPOINT": false
     }
 }
