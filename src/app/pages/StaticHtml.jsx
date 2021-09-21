@@ -7,7 +7,7 @@ const StaticHtmlPage = ({ match }) => {
     const { filename } = match.params;
 
     return (
-        <Template>
+        <Template hiddenContextBar>
             <div className="markdown">
                 <MarkdownRenderer filename={filename} />
             </div>

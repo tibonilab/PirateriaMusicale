@@ -54,7 +54,7 @@ const Index = () => {
     );
 
     return (
-        <Template>
+        <Template hiddenContextBar>
             <div className="markdown">
                 {
                     indexMarkdown
