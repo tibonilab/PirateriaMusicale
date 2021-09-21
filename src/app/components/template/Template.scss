@@ -98,16 +98,27 @@
     
         .contextBar {
             &-root {
-                width: 320px;
+                width: 420px;
                 top: 70px;
-                left: -245px;
+                left: -345px;
                 position: fixed;
                 background: $light-gray-e;
                 bottom: 0;
                 padding: 2em;
                 z-index: 1;
-            
+                
                 transition: left .25s ease-in-out;
+
+                .toc-scroller {
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    position: absolute;                    
+                    max-width: 420px;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    padding: 1em 1.5em
+                }
             }
             
             &-driver {

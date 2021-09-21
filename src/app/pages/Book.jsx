@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import HTMLfile from '../../../dataset/output.html';
 
@@ -13,6 +13,9 @@ import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 import { useDidMount } from '../hooks/useDidMount';
 
 import './Book.scss';
+
+import AnalysisContext from '../context/analysisContext';
+
 
 const anchorClickHandler = (id) => {
     const highlighted = document.getElementsByClassName('highlight');
@@ -125,6 +128,8 @@ const parseHTML = () => HTMLfile.replaceAll('((REPLACE_WITH_MEDIA_ENDPOINT))', M
 const countPages = () => document.getElementsByClassName('pagebreak').length;
 
 const TestHtml = () => {
+
+    const { isContextBarVisible } = useContext(AnalysisContext);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [currentPageURI, setCurrentPageURI] = useState('');
@@ -268,7 +273,7 @@ const TestHtml = () => {
                 </figure>
             </div>
 
-            <div style={{ display: 'flex', maxWidth: 'calc(100% - 75px)', width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
+            <div style={{ display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
 
                 <div
                     id="scroller"

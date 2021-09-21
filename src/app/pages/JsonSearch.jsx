@@ -34,7 +34,7 @@ const JsonSearch = () => {
     const { searchResults, performSearch, loadingSearch } = useContext(CurstomContext);
 
     return (
-        <Template>
+        <Template hiddenContextBar>
             <form style={{ marginTop: '.5em', marginBottom: '2em' }} onSubmit={(e) => { e.preventDefault(); performSearch(searchTerm); setHighlightTerm(searchTerm); }}>
                 <FlexWrapper>
                     <Input
