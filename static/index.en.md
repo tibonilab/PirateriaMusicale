@@ -1,12 +1,35 @@
-# Florian Bassani, La pirateria musicale in Ticino durante il Risorgimento
-# Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.
 
-<!--div style="width: 150px; float: right; margin: 0px 0px 10px 30px;">
-	<img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/einsiedeln_c.png">
-</div-->
+<p align="center">![upper flourish](/media/chapter-00-image1.png)</p>
+
+<p align="center">Florian Bassani</p>
+
+<p align="center">![middle flourish](/media/chapter-00-image2.png)</p>
+
+<p align="center"><h1>La pirateria musicale in Ticino durante il Risorgimento</h1></p>
+
+<p align="center"><h2>Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.</h2></p>
+
+<p align="center">![bottom flourish](/media/chapter-00-image3.png)</p>
+
+
+Lugano, 11 aprile 2021
+
+
+Alla memoria di Padre Callisto Caldelari (1934–2014)
 
 
 
+
+
+Il presente studio costituisce uno dei risultati di una ricerca storico-musicale, resa possibile grazie al sostengo del Cantone Ticino (Borsa di ricerca per il biennio 2018/2020).
+Titolo del progetto: 
+<p align="center"><em>L’Euterpe ticinese di Chiasso tra arte e società, mercato e politica.</em></p>
+<p align="center"><em>Particolarità di una casa editrice musicale di confine durante il Risorgimento</em></p>
+
+
+Proprietà dell’autore. 
+Tutti i diritti riservati. 
+© Florian Bassani 2021
 
 
 
