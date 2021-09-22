@@ -25,6 +25,8 @@ const AnalysisState = props => {
     const [pinnedDocuments, setPinnedDocuments] = useStateWithSession([], 'pinnedDocuments', SESSION_PREFIX);
     const [shouldUpdateSearchHistory, setShouldUpdateSearchHistory] = useState(false);
 
+    const [activeChapter, setActiveChapter] = useState(0);
+
     const didMount = useDidMount();
 
     const dateRangeChangeHandler = updatedDateRange => {
@@ -73,7 +75,8 @@ const AnalysisState = props => {
                 setDateRange,
                 setCollections,
                 shouldUpdateSearchHistory,
-                setShouldUpdateSearchHistory
+                setShouldUpdateSearchHistory,
+                activeChapter, setActiveChapter
             }}
         >
             {props.children}
