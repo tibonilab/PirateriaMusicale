@@ -1,11 +1,16 @@
-# Florian Bassani - Pirateria Musicale
+# Florian Bassani, La pirateria musicale in Ticino durante il Risorgimento
+# Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.
 
 <!--div style="width: 150px; float: right; margin: 0px 0px 10px 30px;">
 	<img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/einsiedeln_c.png">
 </div-->
 
-work in progress..
 
+
+
+
+
+La pubblicazione è avvenuta nell’autunno 2021 nella serie [RISM Digital Library](https://rism.digital/it/publications/d-lib.html) con il generoso sostegno dell’associazione [Ricerche musicali nella Svizzera italiana](http://www.ricercamusica.ch/index.htm).
 <!--
 <p>The XSL stylesheet for generating the manuscript description page was kindly provided by the <a href="http://www.e-codices.ch" target="_blank">e-codices</a> project.</p>
 
