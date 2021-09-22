@@ -10,7 +10,7 @@
             "link": [
               {
                 "label": "Introduzione",
-                "target": "9b3670"
+                "target": "b35653"
               }
             ]
           },
@@ -843,6 +843,7 @@
             "group": [
               {
                 "name": "5. Depositi - Carlo Pozzi (1836–1855)",
+                "target": "93038d",
                 "link": [
                   {
                     "label": "a) sintesi cronologica",
@@ -873,6 +874,7 @@
               },
               {
                 "name": "5. Depositi - Gioachino Spinelli / Euterpe Ticinese (1838–1854)",
+                "target": "5cf6fe",
                 "link": [
                   {
                     "label": "a) sintesi cronologica",
@@ -903,6 +905,7 @@
               },
               {
                 "name": "5. Depositi - Achille Bustelli-Rossi (1857–1867)",
+                "target": "7b652a",
                 "link": [
                   {
                     "label": "a) sintesi cronologica",
@@ -933,6 +936,7 @@
               },
               {
                 "name": "5. Depositi - Francesco Veladini (1860–1866)",
+                "target": "972679",
                 "link": [
                   {
                     "label": "> sintesi cronologica",
@@ -949,6 +953,7 @@
             "group": [
               {
                 "name": "6. Cataloghi - Catalogo delle musiche prodotte da Carlo Pozzi",
+                "target": "a2e5dd",
                 "link": [
                   {
                     "label": "a) in ordine numerico",
@@ -969,6 +974,7 @@
               },
               {
                 "name": "6. Cataloghi - Catalogo delle musiche prodotte da Euterpe Ticinese",
+                "target": "1fabf6",
                 "link": [
                   {
                     "label": "a) in ordine numerico",
@@ -989,6 +995,7 @@
               },
               {
                 "name": "6. Cataloghi - Catalogo delle musiche prodotte da Achille Bustelli-Rossi",
+                "target": "ecd6d3",
                 "link": [
                   {
                     "label": "a) in ordine numerico",
