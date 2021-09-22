@@ -1,15 +1,18 @@
 
-<p align="center">![upper flourish](/media/chapter-00-image1.png)</p>
+<p style="text-align: center"><img src="/media/chapter-00-image1.png" alt="" style="max-width: 500px;"/></p>
+<br /><br />
+<p style="text-align: center">Florian Bassani</p>
+<br /><br />
+<p style="text-align: center">
+	<img src="/media/chapter-00-image2.png" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.png" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.png" alt="" style="max-width: 80px" />
+</p>
+<br /><br />
+<p style="text-align: center"><h1 style="text-align: center">La pirateria musicale in Ticino durante il Risorgimento</h1></p>
 
-<p align="center">Florian Bassani</p>
+<p style="text-align: center"><h2 style="text-align: center">Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.</h2></p>
 
-<p align="center">![middle flourish](/media/chapter-00-image2.png)</p>
-
-<p align="center"><h1>La pirateria musicale in Ticino durante il Risorgimento</h1></p>
-
-<p align="center"><h2>Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.</h2></p>
-
-<p align="center">![bottom flourish](/media/chapter-00-image3.png)</p>
+<br /><br />
+<p style="text-align: center"><img src="/media/chapter-00-image3.png" alt="" style="max-width: 500px" /></p>
 
 
 Lugano, 11 aprile 2021
@@ -17,21 +20,24 @@ Lugano, 11 aprile 2021
 
 Alla memoria di Padre Callisto Caldelari (1934–2014)
 
+<br /><br /><br />
 
 
 
+Il presente studio costituisce uno dei risultati di una ricerca storico-musicale, resa possibile grazie al sostengo del Cantone Ticino (Borsa di ricerca per il biennio 2018/2020).<br />
+<br />
 
-Il presente studio costituisce uno dei risultati di una ricerca storico-musicale, resa possibile grazie al sostengo del Cantone Ticino (Borsa di ricerca per il biennio 2018/2020).
 Titolo del progetto: 
-<p align="center"><em>L’Euterpe ticinese di Chiasso tra arte e società, mercato e politica.</em></p>
-<p align="center"><em>Particolarità di una casa editrice musicale di confine durante il Risorgimento</em></p>
+<p style="text-align: center"><em>L’Euterpe ticinese di Chiasso tra arte e società, mercato e politica.</em></p>
+<p style="text-align: center"><em>Particolarità di una casa editrice musicale di confine durante il Risorgimento</em></p>
 
+<br /><br />
 
 Proprietà dell’autore. 
 Tutti i diritti riservati. 
 © Florian Bassani 2021
 
-
+<br /><br /><br />
 
 La pubblicazione è avvenuta nell’autunno 2021 nella serie [RISM Digital Library](https://rism.digital/it/publications/d-lib.html) con il generoso sostegno dell’associazione [Ricerche musicali nella Svizzera italiana](http://www.ricercamusica.ch/index.htm).
 <!--
