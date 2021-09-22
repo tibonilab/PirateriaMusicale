@@ -110,8 +110,7 @@
                 transition: left .25s ease-in-out;
 
                 .toc-scroller {
-                    overflow-y: auto;
-                    overflow-x: hidden;
+                    overflow: hidden;
                     position: absolute;                    
                     max-width: 420px;
                     height: 100%;
@@ -120,6 +119,8 @@
                     padding: 1em 1.5em
                 }
             }
+
+
             
             &-driver {
                 display: flex;
@@ -154,6 +155,11 @@
                     &:after {
                         transform: rotate(180deg);
                     }
+                }
+
+                .toc-scroller {
+                    overflow-y: auto;
+                    overflow-x: hidden;
                 }
             }
         }
