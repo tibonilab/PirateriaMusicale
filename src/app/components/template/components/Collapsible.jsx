@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Collapsible.scss';
 
@@ -7,8 +7,8 @@ const BASE_CLASS_NAMES = ['collapsible-root'];
 const Collapsible = props => {
 
     const [collapsed, setCollapsed] = useState(false);
-
     const [classNames, setClassNames] = useState(BASE_CLASS_NAMES);
+    const [highlight, setHighlight] = useState(props.highlight);
 
     let animationTimer;
 
@@ -35,10 +35,15 @@ const Collapsible = props => {
         props.onClickHandler && props.onClickHandler(collapsed);
     };
 
+    useEffect(() => setHighlight(props.highlight), [props.highlight]);
+
     return (
         <div className={classNames.join(' ')}>
             <div className="collapsible-header" onClick={toggleCollapsed}>
                 {props.header}
+                {
+                    highlight && <div className="collapsible-header-pointer" />
+                }
             </div>
 
             <div className="collapsible-body">
