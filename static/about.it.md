@@ -2,6 +2,8 @@
 
 La realizzazione tecnica della versione online è stata curata da Alberto Tiboni e Rodolfo Zitellini.
 
+DOI: <https://doi.org/10.5448/rism-d-lib-019>
+
 Per commenti e informazioni si prega di contattare claudio.bacciagaluppi AT rism.digital.
 
 
