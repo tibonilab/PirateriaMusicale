@@ -28,10 +28,15 @@ const getHighlightedText = (text, highlight) => {
 
 const JsonSearch = () => {
 
-    const [searchTerm, setSearchTerm] = useStateWithSession('', 'searchTerm', 'CustomState');
-    const [highlightTerm, setHighlightTerm] = useStateWithSession('', 'highlightTerm', 'CustomState');
-
-    const { searchResults, performSearch, loadingSearch } = useContext(CurstomContext);
+    const {
+        searchTerm,
+        highlightTerm,
+        setSearchTerm,
+        setHighlightTerm,
+        searchResults,
+        performSearch,
+        loadingSearch
+    } = useContext(CurstomContext);
 
     return (
         <Template hiddenContextBar>
@@ -68,7 +73,7 @@ const JsonSearch = () => {
                                     {getHighlightedText(result.transcription, highlightTerm)}
                                 </div>
                             </div>
-                            <Link to={`/book#${result.ref}`} target="_blank">{t('search.actions.go')}</Link>
+                            <Link to={`/book#${result.ref}`} target="_blank" onClick={() => { localStorage.setItem('temp-key', highlightTerm); }}>{t('search.actions.go')}</Link>
                         </div>
 
 

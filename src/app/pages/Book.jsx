@@ -15,8 +15,9 @@ import { useDidMount } from '../hooks/useDidMount';
 import './Book.scss';
 
 import AnalysisContext from '../context/analysisContext';
+import customContext from '../context/customContext';
 
-const highlightItem = (id) => {
+const highlightItem = (id, text) => {
     const highlighted = document.getElementsByClassName('highlight');
 
     for (let item of highlighted) {
@@ -24,17 +25,25 @@ const highlightItem = (id) => {
     }
 
     const element = document.getElementById(id);
-    element.classList.add('highlight');
+
+    if (element) {
+        element.classList.add('highlight');
+
+        if (/\S/.test(text)) {
+            element.innerHTML = element.innerHTML.replace(new RegExp(`(${text})`, 'gi'), '<span style="background: yellow">$1</span>');
+        }
+    }
+
 };
 
 
-const anchorClickHandler = (id, highlight = true) => {
+const anchorClickHandler = (id, highlightTerm) => {
     const element = document.getElementById(id);
 
     // const position = id.includes('d1e') ? 'center' : 'start';
     const position = 'start';
 
-    highlight && highlightItem(id);
+    highlightItem(id, highlightTerm);
 
     if (element) {
         element.scrollIntoView({
@@ -137,6 +146,8 @@ const TestHtml = () => {
 
     const { isContextBarVisible, setActiveChapter } = useContext(AnalysisContext);
 
+    const { highlightTerm, setHighlightTerm } = useContext(customContext);
+
     const [currentHash, setCurrentHash] = useState();
     const [isMobile, setIsMobile] = useState(window.outerWidth < 1440);
     const [leftSideSize, setLeftSideSize] = useState(window.outerWidth >= 1440 ? 60 : 100);
@@ -144,7 +155,7 @@ const TestHtml = () => {
 
     const onHashChange = () => {
         if (currentHash) {
-            anchorClickHandler(currentHash);
+            anchorClickHandler(currentHash, highlightTerm);
         } else {
             window.scrollTop = 0;
         }
@@ -155,7 +166,7 @@ const TestHtml = () => {
         setCurrentHash(anchor);
 
         if (anchor) {
-            anchorClickHandler(anchor);
+            anchorClickHandler(anchor, highlightTerm);
 
             const scroller = document.getElementById('scroller');
 
@@ -222,6 +233,17 @@ const TestHtml = () => {
         }
     };
 
+    const fetchHighlightTerm = () => {
+        const highlightTerm = localStorage.getItem('temp-key');
+
+        highlightTerm && (() => {
+            localStorage.removeItem('temp-key');
+            setHighlightTerm(highlightTerm);
+
+            anchorClickHandler(window.location.hash.substring(1), highlightTerm);
+        })();
+    };
+
     if (!didMount) {
         window.addEventListener('hashchange', setCurrentHashByWindowHash, false);
         window.addEventListener('resize', updateLayout, false);
@@ -233,6 +255,7 @@ const TestHtml = () => {
         if (!didMount) {
             setCurrentHashByWindowHash();
             initEventHandlers();
+            fetchHighlightTerm();
         }
     }, [didMount]);
 

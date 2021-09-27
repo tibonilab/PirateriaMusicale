@@ -12,6 +12,9 @@ const CustomState = props => {
     const [browseResults, setBrowseResults] = useState([], 'browseResults', SESSION_PREFIX);
     const [searchResults, setSearchResults] = useStateWithSession([], 'searchResults', SESSION_PREFIX);
 
+    const [searchTerm, setSearchTerm] = useStateWithSession('', 'searchTerm', SESSION_PREFIX);
+    const [highlightTerm, setHighlightTerm] = useStateWithSession('', 'highlightTerm', SESSION_PREFIX);
+
     const [loadingBrowse, setLoadingBrowse] = useState(false);
     const [loadingSearch, setLoadingSearch] = useState(false);
     const [loadingRelated, setLoadingRelated] = useState(false);
@@ -69,7 +72,9 @@ const CustomState = props => {
                 related,
                 loadRelated,
                 loadingRelated,
-                browseError
+                browseError,
+                searchTerm, setSearchTerm,
+                highlightTerm, setHighlightTerm
             }}
         >
             {props.children}
