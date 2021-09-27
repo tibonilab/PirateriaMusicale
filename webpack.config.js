@@ -89,13 +89,13 @@ module.exports = environment => ({
             JSON_BASE_SERVER: environment.dev
                 ? JSON.stringify('') // leave this empty: it would be managed by the dev server proxy (see above)
                 : environment.production
-                    ? JSON.stringify('http://kapellmeisterbuch-api.rism.digital')   // production endpoint
+                    ? JSON.stringify('http://pirateriamusicale-api.rism.digital')   // production endpoint
                     : JSON.stringify('https://rism-bassani-search.altibo.club'),     // staging endpoint
 
             MEDIA_ENDPOINT: environment.dev
                 ? JSON.stringify('http://localhost/RISM/PirateriaMusicale/dev/media')
                 : environment.production
-                    ? JSON.stringify('my-host.com/media')
+                    ? JSON.stringify('//pirateriamusicale.rism.digital/media')
                     : JSON.stringify('https://rism-bassani.altibo.club/media')
         }),
         new webpack.ProvidePlugin({
