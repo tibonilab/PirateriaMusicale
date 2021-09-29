@@ -26,7 +26,8 @@
         },
         "form": {
             "search_placeholder": "Inserisci qui i tuoi termini di ricerca...",
-            "submit": "Ricerca"
+            "submit": "Ricerca",
+            "loading": "Caricamento.."
         },
         "actions": {
             "go": "Vai"
@@ -40,6 +41,10 @@
         },
         "actions": {
             "go": "Vai"
+        },
+        "results": {
+            "loading": "Caricamento in corso..",
+            "error": "Impossibile caricare l'indice selezionato"
         }
     },
     "consult": {
