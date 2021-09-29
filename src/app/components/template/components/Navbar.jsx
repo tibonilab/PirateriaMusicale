@@ -20,7 +20,7 @@ export const Navbar = () => {
     return (
         <div className="navbar-root">
             <Link to="/" style={{ color: '#323232', textDecoration: 'none', fontWeight: 800 }}>
-                Kapellmeisterbuch
+                PirateriaMusicale
                 {/* <img src="//iiif.rism-ch.org/onstage/images/logo_trans-75-b.png" style={{ maxHeight: '38px' }} /> */}
             </Link>
             <div className="navbar-menu">

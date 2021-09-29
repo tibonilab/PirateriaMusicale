@@ -98,17 +98,68 @@
     
         .contextBar {
             &-root {
-                width: 320px;
+                width: 420px;
+                max-width: calc(100% - 115px);
                 top: 70px;
-                left: -245px;
+                left: -345px;
                 position: fixed;
                 background: $light-gray-e;
                 bottom: 0;
                 padding: 2em;
                 z-index: 1;
-            
                 transition: left .25s ease-in-out;
+
+                .toc-scroller {
+                    overflow: hidden;
+                    position: absolute;                    
+                    max-width: 420px;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    padding: 1em 1.5em;
+
+                    a {
+                        color: $light-black;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    ul {
+                        padding: .2em 1.3em;
+                        font-size: 90%;
+
+                        > li {
+                            padding: .1em 0;
+
+                            a {
+                                display: block;
+                                width: 100%;
+                            }
+                        }
+
+                        ul {
+                            padding: .2em 0em;
+                            
+
+                            li {
+                                list-style: none;
+                                font-size: 100%;
+                                padding: .1em 0;
+
+                                &:last-child {
+                                    padding-bottom: 1em;
+                                }
+                            }
+                            
+                        }
+                    }
+                }
             }
+
+
             
             &-driver {
                 display: flex;
@@ -143,6 +194,11 @@
                     &:after {
                         transform: rotate(180deg);
                     }
+                }
+
+                .toc-scroller {
+                    overflow-y: auto;
+                    overflow-x: hidden;
                 }
             }
         }

@@ -8,6 +8,7 @@
     "start": "gulp webpack-dev-server",
     "deploy": "gulp deploy",
     "deploy:dataset": "gulp deploy-dataset",
+    "deploy:media": "gulp deploy-media",
     "deploy:frontend": "gulp deploy-frontend",
     "deploy:backend": "gulp deploy-backend"
   },

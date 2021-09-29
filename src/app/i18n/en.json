@@ -71,6 +71,10 @@
             "submit": "Browse",
             "loading": "Loading.."
         },
+        "results": {
+            "loading": "Loading data, please wait..",
+            "error": "Unable to load index data"
+        },
         "prev": "« Previous",
         "next": "Next »",
         "search": "Search",

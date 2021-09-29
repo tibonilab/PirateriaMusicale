@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
-import KbTagged from '../../../dataset/KbTagged.html';
+import HTMLfile from '../../../dataset/output.html';
 
 import Template from '../components/template/Template.jsx';
 
@@ -12,7 +12,12 @@ import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 
 import { useDidMount } from '../hooks/useDidMount';
 
-const anchorClickHandler = (id) => {
+import './Book.scss';
+
+import AnalysisContext from '../context/analysisContext';
+import customContext from '../context/customContext';
+
+const highlightItem = (id, text) => {
     const highlighted = document.getElementsByClassName('highlight');
 
     for (let item of highlighted) {
@@ -21,10 +26,26 @@ const anchorClickHandler = (id) => {
 
     const element = document.getElementById(id);
 
-    const position = id.includes('d1e') ? 'center' : 'start';
-
     if (element) {
         element.classList.add('highlight');
+
+        if (/\S/.test(text)) {
+            element.innerHTML = element.innerHTML.replace(new RegExp(`(${text})`, 'gi'), '<span style="background: yellow">$1</span>');
+        }
+    }
+
+};
+
+
+const anchorClickHandler = (id, highlightTerm) => {
+    const element = document.getElementById(id);
+
+    // const position = id.includes('d1e') ? 'center' : 'start';
+    const position = 'start';
+
+    highlightItem(id, highlightTerm);
+
+    if (element) {
         element.scrollIntoView({
             behavior: 'auto',
             block: position,
@@ -33,23 +54,123 @@ const anchorClickHandler = (id) => {
 
         document.getElementById('scroller').scrollLeft = 0;
     }
+};
+
+
+
+
+/**
+ * Perform zoom over focused image
+ * @param {Event} e 
+ */
+const performImgZoom = (e) => {
+
+    e && e.preventDefault();
+
+    const sourceImg = e.currentTarget;
+    const sourceSrc = sourceImg.src;
+
+    const zoommer = document.getElementById('zoommer');
+    const zoommedImg = document.getElementById('zoommed-img');
+    const figure = document.getElementById('zoom');
+
+    const segments = sourceSrc.split('/');
+    const filename = segments.pop();
+    segments.push('fullsize');
+    segments.push(filename);
+
+    const fullsizesrc = segments.join('/');
+
+    e.currentTarget.classList.add('loading');
+
+    // setTimeout(() => {
+    zoommedImg.src = fullsizesrc;
+    figure.style.backgroundImage = `url("${fullsizesrc}")`;
+    figure.style.opacity = 0;
+    // }, 3000);
+
+    zoommedImg.addEventListener('load', () => {
+
+        sourceImg.classList.remove('loading');
+
+        figure.style.width = zoommedImg.width;
+        figure.style.height = zoommedImg.height;
+        figure.style.opacity = 1;
+
+        zoommer.style.display = 'flex';
+    }, false);
+
+
+    /**
+     * the actual zoom on the figure
+     * @param {Event} e 
+     */
+    const zoom = e => {
+        let x;
+        let y;
+        let offsetX;
+        let offsetY;
+
+        var zoomer = e.currentTarget;
+        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX;
+        e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX;
+        x = offsetX / zoomer.offsetWidth * 100;
+        y = offsetY / zoomer.offsetHeight * 100;
+        zoomer.style.backgroundPosition = x + '% ' + y + '%';
+    };
+
+    figure.addEventListener('mousemove', zoom, false);
+
+    zoommer.addEventListener('click', () => { zoommer.style.display = 'none'; }, false);
 
 };
 
+/**
+ * Check if image has "nozoom" class to enable zoom or not
+ * @param {Element} DOMnode 
+ * @returns {boolean}
+ */
+const hasZoom = DOMnode => {
+    if (DOMnode.className && DOMnode.className.split(' ').indexOf('nozoom') >= 0) return false;
+    if (DOMnode.parentNode) {
+        return hasZoom(DOMnode.parentNode);
+    }
+
+    return true;
+};
+
+/**
+ * Init event handlers on imported DOM
+ */
+const initEventHandlers = () => {
+    // init image zoom
+    const imgs = document.getElementsByClassName('inline');
+    Array.from(imgs).forEach(img => hasZoom(img) && img.addEventListener('click', performImgZoom, false));
+
+    // disable <a class="mergeformat">...</a> click
+    const mergeformats = document.getElementsByClassName('mergeformat');
+    Array.from(mergeformats).forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); }, false));
+
+};
+
+const parseHTML = () => HTMLfile.replaceAll('((REPLACE_WITH_MEDIA_ENDPOINT))', MEDIA_ENDPOINT);
+
+const parsedHTML = parseHTML();
+
 const TestHtml = () => {
 
-    const [currentPage, setCurrentPage] = useState(0);
-    const [currentPageURI, setCurrentPageURI] = useState('');
+    const { isContextBarVisible, setActiveChapter } = useContext(AnalysisContext);
+
+    const { highlightTerm, setHighlightTerm } = useContext(customContext);
+
     const [currentHash, setCurrentHash] = useState();
-    const [pageOptions, setPageOptions] = useState([]);
     const [isMobile, setIsMobile] = useState(window.outerWidth < 1440);
     const [leftSideSize, setLeftSideSize] = useState(window.outerWidth >= 1440 ? 60 : 100);
-    const [divaVisible, setDivaVisible] = useState(!isMobile);
     const [initialPageURI, setInitialPageURI] = useState();
 
     const onHashChange = () => {
         if (currentHash) {
-            anchorClickHandler(currentHash);
+            anchorClickHandler(currentHash, highlightTerm);
         } else {
             window.scrollTop = 0;
         }
@@ -60,7 +181,7 @@ const TestHtml = () => {
         setCurrentHash(anchor);
 
         if (anchor) {
-            anchorClickHandler(anchor);
+            anchorClickHandler(anchor, highlightTerm);
 
             const scroller = document.getElementById('scroller');
 
@@ -95,24 +216,26 @@ const TestHtml = () => {
         }
 
         const scrollTop = e.target.scrollTop;
-        const boxHeight = e.target.offsetHeight;
 
-        const pagebreaks = document.getElementsByClassName('pagebreak');
+        if (scrollTop < 100) {
+            setActiveChapter(0);
+            return;
+        }
 
-        let min = 9999999999;
-        let page;
+
+        const pagebreaks = document.getElementsByClassName('stdheader');
+
+        let currentPage = 0;
+
 
         for (let item of pagebreaks) {
 
-            const offset = Math.abs(item.offsetTop - (scrollTop - boxHeight / 2));
-
-            if (min >= offset) {
-                min = offset;
-                page = item;
+            if (item.offsetTop <= scrollTop) {
+                currentPage++;
             }
         }
 
-        setCurrentPageURI(`https://iiif.rism.digital/image/ch/CH_E_925_03/pyr_${page.id}.tif`);
+        setActiveChapter(currentPage);
     };
 
     const updateLayout = () => {
@@ -125,6 +248,17 @@ const TestHtml = () => {
         }
     };
 
+    const fetchHighlightTerm = () => {
+        const highlightTerm = localStorage.getItem('temp-key');
+
+        highlightTerm && (() => {
+            localStorage.removeItem('temp-key');
+            setHighlightTerm(highlightTerm);
+
+            anchorClickHandler(window.location.hash.substring(1), highlightTerm);
+        })();
+    };
+
     if (!didMount) {
         window.addEventListener('hashchange', setCurrentHashByWindowHash, false);
         window.addEventListener('resize', updateLayout, false);
@@ -135,95 +269,34 @@ const TestHtml = () => {
     useEffect(() => {
         if (!didMount) {
             setCurrentHashByWindowHash();
+            initEventHandlers();
+            fetchHighlightTerm();
         }
     }, [didMount]);
 
-    useEffect(() => {
-        setDivaVisible(!isMobile);
-    }, [isMobile]);
-
-
-    const generateSelectPageOptions = (pageCount) => {
-        const options = [];
-        for (let k = 0; k < pageCount; k++) {
-            options.push({ value: k, label: k == 0 ? 'Cover' : k });
-        }
-
-        setPageOptions(options);
-    };
-
-    const divaWrapperStyle = isMobile
-        ? {
-            width: 'calc(100% - 75px)', padding: '1em', right: divaVisible ? 0 : '-100%', zIndex: 1, position: 'fixed', transition: 'right 1s ease-in-out', background: '#fff'
-        }
-        : {
-            width: '40%', padding: '1em', marginRight: '-100%'
-        };
-
     return (
         <Template>
-            <div style={{ display: 'flex', maxWidth: 'calc(100% - 75px)', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -3em' }}>
-                <div style={{ width: divaVisible ? `${leftSideSize}%` : '100%', height: '100%', overflowY: 'auto', borderRight: '2px solid #e3e3e3', transition: 'width 1s ease-in-out' }}>
-
-                    <div
-                        id="scroller"
-                        onScroll={onScrollHtmlHandler}
-                        style={{ width: '100%', height: 'calc(100% - 70px)', overflowY: 'auto', paddingRight: '2em' }}
-                        dangerouslySetInnerHTML={{ __html: KbTagged }}
-                    />
-
-                    <a href="#" style={{ position: 'fixed', bottom: '26px', right: '1em', zIndex: 1 }} onClick={e => { e && e.preventDefault(); setDivaVisible(!divaVisible); }}>
-                        {divaVisible ? 'Hide Diva' : 'Show Diva'}
-                    </a>
-
-                    <FlexWrapper justifyContent="center" style={{ borderTop: '2px solid #e3e3e3', position: 'absolute', bottom: 0, height: '70px', padding: '10px 70px 10px 0', width: '100%', background: '#fff' }}>
-
-
-                        <FlexWrapper style={{ width: '250px' }} className="nav">
-                            <div style={{ marginTop: '-6px' }}>
-                                <label>Navigation</label>
-                                <FlexWrapper>
-
-                                    <PrimaryButtonSmall disabled={currentPage === 0} action={() => setCurrentPage(currentPage - 1 || 0)}>
-                                        <span>&laquo;&nbsp;Prev</span>
-                                    </PrimaryButtonSmall>
-
-                                    <PrimaryButtonSmall style={{ marginLeft: '2px' }} disabled={currentPage === pageOptions.length - 1} action={() => setCurrentPage(currentPage + 1)}>
-                                        <span>Next&nbsp;&raquo;</span>
-                                    </PrimaryButtonSmall>
-                                </FlexWrapper>
-                            </div>
-
-                            <Select
-                                label="Current page"
-                                style={{ marginLeft: '1em', marginTop: '-6px' }}
-                                inputStyle={{ padding: '.5rem' }}
-                                options={pageOptions}
-                                value={currentPage}
-                                onChangeHandler={value => setCurrentPage(parseInt(value, 10))}
-                            />
-
-                        </FlexWrapper>
-                    </FlexWrapper>
-                </div>
-
-                <div style={divaWrapperStyle}>
-
-                    <Diva
-                        manifest="CH_E_925_03.json"
-                        currentPage={currentPage}
-                        initialPage={currentPage}
-                        currentPageURI={currentPageURI}
-                        initialPageURI={initialPageURI}
-                        onLoad={count => { generateSelectPageOptions(count); }}
-                        onPageChangeHandler={setCurrentPage}
-                        onScrollHandler={index => anchorClickHandler(index.replace('https://iiif.rism.digital/image/ch/CH_E_925_03/pyr_', '').slice(0, -4))}
-                        enableLinkIcon
-                        enablePlugins
-                    />
-                </div>
+            <div id="zoommer">
+                <figure id="zoom">
+                    <img id="zoommed-img" src="" />
+                </figure>
             </div>
-        </Template >
+
+            <div style={{ display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible && !isMobile ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
+
+                <div
+                    id="scroller"
+                    onScroll={onScrollHtmlHandler}>
+                    <div
+                        id="scroller-content"
+                        dangerouslySetInnerHTML={{ __html: parsedHTML }}
+                    >
+                    </div>
+                </div>
+
+            </div>
+
+        </Template>
     );
 };
 

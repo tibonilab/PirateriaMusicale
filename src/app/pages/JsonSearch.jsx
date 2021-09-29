@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { useStateWithSession } from '../service/serviceStorage';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -10,6 +9,7 @@ import CurstomContext from '../context/customContext';
 import Input from '../components/form/Input.jsx';
 import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 import ActionLink from '../components/template/components/ActionLink.jsx';
+import Loading from '../components/template/components/Loading.jsx';
 
 import { PrimaryButton } from '../components/template/components/Buttons.jsx';
 
@@ -28,13 +28,18 @@ const getHighlightedText = (text, highlight) => {
 
 const JsonSearch = () => {
 
-    const [searchTerm, setSearchTerm] = useStateWithSession('', 'searchTerm', 'CustomState');
-    const [highlightTerm, setHighlightTerm] = useStateWithSession('', 'highlightTerm', 'CustomState');
-
-    const { searchResults, performSearch, loadingSearch } = useContext(CurstomContext);
+    const {
+        searchTerm,
+        highlightTerm,
+        setSearchTerm,
+        setHighlightTerm,
+        searchResults,
+        performSearch,
+        loadingSearch
+    } = useContext(CurstomContext);
 
     return (
-        <Template>
+        <Template hiddenContextBar>
             <form style={{ marginTop: '.5em', marginBottom: '2em' }} onSubmit={(e) => { e.preventDefault(); performSearch(searchTerm); setHighlightTerm(searchTerm); }}>
                 <FlexWrapper>
                     <Input
@@ -52,11 +57,7 @@ const JsonSearch = () => {
             </div>
             {
                 loadingSearch
-                    ?
-                    <FlexWrapper justifyContent="center" alignItems="center" style={{ flexDirection: 'column', height: '70vh' }}>
-                        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                        <h4>Loading data, please wait..</h4>
-                    </FlexWrapper>
+                    ? <Loading />
                     : searchResults && searchResults.map((result, key) => (
 
                         <div key={key} style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '.5em' }}>
@@ -68,13 +69,13 @@ const JsonSearch = () => {
                                     {getHighlightedText(result.transcription, highlightTerm)}
                                 </div>
                             </div>
-                            <Link to={`/book#${result.ref}`} target="_blank">{t('search.actions.go')}</Link>
+                            <Link to={`/book#${result.ref}`} target="_blank" onClick={() => { localStorage.setItem('temp-key', highlightTerm); }}>{t('search.actions.go')}</Link>
                         </div>
 
 
                     ))
             }
-        </Template >
+        </Template>
     );
 };
 
