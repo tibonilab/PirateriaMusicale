@@ -67,21 +67,35 @@ const performImgZoom = (e) => {
 
     e && e.preventDefault();
 
-    const src = e.currentTarget.src;
+    const sourceImg = e.currentTarget;
+    const sourceSrc = sourceImg.src;
 
     const zoommer = document.getElementById('zoommer');
     const zoommedImg = document.getElementById('zoommed-img');
     const figure = document.getElementById('zoom');
 
-    zoommedImg.src = src;
-    figure.style.backgroundImage = `url("${src}")`;
+    const segments = sourceSrc.split('/');
+    const filename = segments.pop();
+    segments.push('fullsize');
+    segments.push(filename);
 
-    zoommedImg.addEventListener('load', (e) => {
+    const fullsizesrc = segments.join('/');
 
-        const img = e.currentTarget;
+    e.currentTarget.classList.add('loading');
 
-        figure.style.width = img.width;
-        figure.style.height = img.height;
+    // setTimeout(() => {
+    zoommedImg.src = fullsizesrc;
+    figure.style.backgroundImage = `url("${fullsizesrc}")`;
+    figure.style.opacity = 0;
+    // }, 3000);
+
+    zoommedImg.addEventListener('load', () => {
+
+        sourceImg.classList.remove('loading');
+
+        figure.style.width = zoommedImg.width;
+        figure.style.height = zoommedImg.height;
+        figure.style.opacity = 1;
 
         zoommer.style.display = 'flex';
     }, false);

@@ -158,6 +158,8 @@
         max-height: 95%;
         border: 1em solid #fff;
         pointer-events: none;
+        transition: opacity .5s;
+        background-color: #fff;
 
         &:after {
             position: absolute;
@@ -193,4 +195,22 @@
             opacity: 0;
         }
     }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+img.loading {
+    animation: pulse 1s infinite ease-in;
 }
