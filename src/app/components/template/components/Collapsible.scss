@@ -1,5 +1,19 @@
 @import 'src/app/components/template/Palette.scss';
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 .collapsible {
     &-root {
@@ -14,6 +28,10 @@
         margin-bottom: .5em;
         position: relative;
 
+        &-loading {
+            display:none;
+        }
+
         &-caption::before {
             content: '';
             display: inline-block;
@@ -26,6 +44,38 @@
             margin-right: 10px;
             margin-top: -3px;
             margin-bottom: 3px;
+        }
+
+        &__loading {
+            .collapsible-header-caption::before {
+                display: none !important;
+            }
+
+            .collapsible-header-loading {
+                // margin: 60px auto;
+                font-size: 10px;
+                position: relative;
+                text-indent: -9999em;
+                border-top: 2.5px solid rgba(0, 0, 0, .9);
+                border-right: 2.5px solid rgba(0, 0, 0, .9);
+                border-bottom: 2.5px solid rgba(0, 0, 0, .9);
+                border-left: 2px solid #ffffff;
+                transform: translateZ(0);
+                animation: spin 1s infinite linear;
+                border-radius: 50%;
+                width: 14px;
+                height: 14px;
+                display:inline-block;
+                margin-right: 5px;
+                margin-top: 13px;
+                margin-bottom: -13px;
+    
+                &:after {
+                  border-radius: 50%;
+                  width: 14px;
+                  height: 14px;
+                }
+            }
         }
 
         &-pointer {

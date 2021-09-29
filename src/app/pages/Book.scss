@@ -1,14 +1,23 @@
 #scroller {
     overflow-y: auto;
+    overflow-x: hidden;
     // height: calc(100% - 70px); 
-    height: 100%;
+    // height: 100%;
+    // width: 100%;
     width: 100%;
+    height: calc(100vh - 73px);
+    position: absolute;
+    // border: 2px solid red;
+
     // background: #f4f5f6;
 
     &-content {
         max-width: 980px;
         margin: auto;
-        padding: 0 2em;
+        padding: 0 2em 40vh 2em;
+        width: 100%;
+        // border:2px solid blue;
+        word-break: break-word;
         // background:#fff;
         // border: {
         //     right: 1px solid #999;
@@ -32,6 +41,10 @@
         //     border-left: 1px solid #f4f5f6;
         //     border-right: 1px solid #f4f5f6;
         // }
+
+        * {
+            max-width: 100%;
+        }
 
         .highlight {
             background-color: transparent !important;
@@ -72,6 +85,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
+
+            > p {
+               padding: 0; 
+            }
 
             img.inline {
                 margin: 1.5em 1em 3em 1em; 
@@ -84,6 +102,7 @@
                     border: .5em solid white;
                     box-shadow: 0 0 6px #bbb;
                     transition: box-shadow .3s;
+                    max-width: calc(100% - 2em);
         
                     &:hover {
                         box-shadow: 0 0 12px #bbb;

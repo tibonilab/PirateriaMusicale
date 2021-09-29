@@ -21,7 +21,7 @@ export const TocContextBar = ({ visible, toggleBar }) => {
     return (
         <ContextBar visible={visible} toggleBar={toggleBar}>
             <div className="toc-scroller">
-                <h4>Table of Contents</h4>
+                <h4>Naviga per Sommario</h4>
                 {
                     toc.map((e, k) => (
                         <Collapsible highlight={activeChapter == k + 1} key={e.name} header={<div><h5>{e.name}</h5><span><small>{e.subtitle}</small></span></div>}>

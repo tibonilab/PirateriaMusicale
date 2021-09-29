@@ -9,6 +9,7 @@ const Collapsible = props => {
     const [collapsed, setCollapsed] = useState(false);
     const [classNames, setClassNames] = useState(BASE_CLASS_NAMES);
     const [highlight, setHighlight] = useState(props.highlight);
+    const [loading, setLoading] = useState(props.loading);
 
     let animationTimer;
 
@@ -36,10 +37,20 @@ const Collapsible = props => {
     };
 
     useEffect(() => setHighlight(props.highlight), [props.highlight]);
+    useEffect(() => setLoading(props.loading), [props.loading]);
+
+    const headerClassNames = ['collapsible-header'];
+
+    if (loading) {
+        headerClassNames.push('collapsible-header__loading');
+    }
+
+    console.log(headerClassNames);
 
     return (
         <div className={classNames.join(' ')}>
-            <div className="collapsible-header" onClick={toggleCollapsed}>
+            <div className={headerClassNames.join(' ')} onClick={toggleCollapsed}>
+                <div className="collapsible-header-loading" />
                 {props.header}
                 {
                     highlight && <div className="collapsible-header-pointer" />

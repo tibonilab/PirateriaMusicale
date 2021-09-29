@@ -26,10 +26,12 @@ const CustomState = props => {
     const loadRelated = ({ index, params }) => {
         if (!related[`${params.key}_${params.name}`]) {
             setLoadingRelated({ index, params });
-            Json.browse({ index, params }).then(r => {
-                setRelated({ ...related, [`${params.key}_${params.name}`]: r });
-                setLoadingRelated(false);
-            });
+            setTimeout(() => {
+                Json.browse({ index, params }).then(r => {
+                    setRelated({ ...related, [`${params.key}_${params.name}`]: r });
+                    setLoadingRelated(false);
+                });
+            }, 500);
         }
     };
 

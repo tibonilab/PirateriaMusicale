@@ -155,6 +155,7 @@ const initEventHandlers = () => {
 
 const parseHTML = () => HTMLfile.replaceAll('((REPLACE_WITH_MEDIA_ENDPOINT))', MEDIA_ENDPOINT);
 
+const parsedHTML = parseHTML();
 
 const TestHtml = () => {
 
@@ -281,16 +282,15 @@ const TestHtml = () => {
                 </figure>
             </div>
 
-            <div style={{ display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
+            <div style={{ display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible && !isMobile ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
 
                 <div
                     id="scroller"
                     onScroll={onScrollHtmlHandler}>
-                    <div>
-                        <div
-                            id="scroller-content"
-                            dangerouslySetInnerHTML={{ __html: parseHTML() }}
-                        />
+                    <div
+                        id="scroller-content"
+                        dangerouslySetInnerHTML={{ __html: parsedHTML }}
+                    >
                     </div>
                 </div>
 

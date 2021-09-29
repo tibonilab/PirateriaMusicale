@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useStateWithSession } from '../service/serviceStorage';
 
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Template from '../components/template/Template.jsx';
 
@@ -10,6 +10,7 @@ import CurstomContext from '../context/customContext';
 import Select from '../components/form/Select.jsx';
 import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 import Collapsible from '../components/template/components/Collapsible.jsx';
+import Loading from '../components/template/components/Loading.jsx';
 
 import { PrimaryButton } from '../components/template/components/Buttons.jsx';
 
@@ -20,6 +21,8 @@ const indexes = () => [
     { value: 'Composers6', label: 'Compositori e Autori - Cataloghi' },
     // { value: 'Toc', label: 'Sommario' },
 ];
+
+
 
 const JsonBrowse = () => {
 
@@ -32,6 +35,9 @@ const JsonBrowse = () => {
         related,
         browseError
     } = useContext(CurstomContext);
+
+    // const loadingBrowse = true;
+    console.log(loadingRelated);
 
     const [selectedIndex, setSelectedIndex] = useStateWithSession('', 'selectedIndex', 'CustomState');
 
@@ -52,17 +58,14 @@ const JsonBrowse = () => {
                         onChangeHandler={selectChangeHandler}
                         options={indexes()}
                     />
-                    <PrimaryButton disabled={loadingBrowse} type="submit">{t(`browse.form.${loadingBrowse ? 'loading' : 'submit'}`)}</PrimaryButton>
+                    <PrimaryButton disabled={loadingBrowse || selectedIndex == ''} type="submit">{t(`browse.form.${loadingBrowse ? 'loading' : 'submit'}`)}</PrimaryButton>
                 </FlexWrapper>
             </form>
             {
                 loadingBrowse
-                    ? <FlexWrapper justifyContent="center" alignItems="center" style={{ flexDirection: 'column', height: '70vh' }}>
-                        <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                        <h4>Loading data, please wait..</h4>
-                    </FlexWrapper>
+                    ? <Loading />
                     : browseError
-                        ? <div>{'Unable to load index data'}</div>
+                        ? <div>{t('browse.results.error')}</div>
                         : browseResults && browseResults/* .slice(0, 3) */.map((e, key) => {
                             // console.log(e); 
                             return (
@@ -78,13 +81,8 @@ const JsonBrowse = () => {
                                                 }
                                             </h3>
                                         )}
+                                        loading={isLoadingRelated(key, e.name)}
                                         onClickHandler={collapsed => !collapsed && loadRelated({ index: selectedIndex, params: { key, name: e.name } })}>
-
-                                        {
-                                            isLoadingRelated(key, e.name) && <div><div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                                                <h4>Loading data, please wait..</h4></div>
-                                        }
-
                                         {
                                             related[`${key}_${e.name}`] && (!isLoadingRelated(key, e.name) && related[`${key}_${e.name}`] && Array.isArray(related[`${key}_${e.name}`])) && <div><ul>{
                                                 related[`${key}_${e.name}`].map((data, index) => {
@@ -92,7 +90,7 @@ const JsonBrowse = () => {
 
                                                     if (data.target) {
                                                         return (
-                                                            <li key={index}>{data.label} <Link to={`/book#${data.target}`}>Go</Link></li>
+                                                            <li key={index}>{data.label} <Link target="_blank" to={`/book#${data.target}`}>{t('browse.actions.go')}</Link></li>
                                                         );
                                                     }
 
@@ -100,7 +98,7 @@ const JsonBrowse = () => {
                                                         <li key={index}>
                                                             {data.name}
                                                             <ul>
-                                                                {data.link.map((link, i) => <li key={i}>{link.label} <Link to={`/book#${link.target}`}>Go</Link></li>)}
+                                                                {data.link.map((link, i) => <li key={i}>{link.label} <Link target="_blank" to={`/book#${link.target}`}>{t('browse.actions.go')}</Link></li>)}
                                                             </ul>
                                                         </li>
                                                     );
