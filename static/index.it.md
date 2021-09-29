@@ -1,10 +1,10 @@
 
-<p style="text-align: center"><img src="/media/chapter-00-image1.png" alt="" style="max-width: 500px;"/></p>
+<p style="text-align: center"><img src="/media/chapter-00-image1.jpg" alt="" style="max-width: 500px;"/></p>
 <br /><br />
 <p style="text-align: center">Florian Bassani</p>
 <br /><br />
 <p style="text-align: center">
-	<img src="/media/chapter-00-image2.png" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.png" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.png" alt="" style="max-width: 80px" />
+	<img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 80px" />
 </p>
 <br /><br />
 <p style="text-align: center"><h1 style="text-align: center">La pirateria musicale in Ticino durante il Risorgimento</h1></p>
@@ -12,7 +12,7 @@
 <p style="text-align: center"><h2 style="text-align: center">Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.</h2></p>
 
 <br /><br />
-<p style="text-align: center"><img src="/media/chapter-00-image3.png" alt="" style="max-width: 500px" /></p>
+<p style="text-align: center"><img src="/media/chapter-00-image3.jpg" alt="" style="max-width: 500px" /></p>
 
 
 Lugano, 11 aprile 2021
@@ -45,9 +45,9 @@ La pubblicazione è avvenuta nell’autunno 2021 nella serie [RISM Digital Libra
 
 <div>
 	<table border="0" cellspacing="35px" style="margin: 0 auto;text-align:center"><tbody><tr><td align="center">
-			<a href="http://www.rism-ch.org" target="_blank"><img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/logo-RISM-large-ch.png" width="80px" border="0"></a>
+			<a href="http://www.rism-ch.org" target="_blank"><img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/logo-RISM-large-ch.jpg" width="80px" border="0"></a>
 		</td><td align="center">
-			<a href="http://www.snf.ch/it" target="_blank"><img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/SNF_RGB_I_POS.png" width="200px" border="0"></a>
+			<a href="http://www.snf.ch/it" target="_blank"><img src="//raw.githubusercontent.com/tibonilab/inventari-di-napoli/kmb/static/SNF_RGB_I_POS.jpg" width="200px" border="0"></a>
 		</td></tr></tbody></table>
 </div>
 -->
