@@ -1,4 +1,5 @@
 
+<div class="content-container">
 <p style="text-align: center"><img src="/media/chapter-00-image1.jpg" alt="" style="max-width: 500px;"/></p>
 <br /><br />
 <p style="text-align: center">Florian Bassani</p>
@@ -51,3 +52,4 @@ La pubblicazione è avvenuta nell’autunno 2021 nella serie [RISM Digital Libra
 		</td></tr></tbody></table>
 </div>
 -->
+</div>
