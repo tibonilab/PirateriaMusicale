@@ -24,4 +24,5 @@ L’accesso per navigazione è utile quando si desidera sfogliare un indice. Son
 Qui si trova l’intero libro da sfogliare. Funzionalità:
 - Navigazione attraverso il sommario (nella barra a scomparsa)
 - Scorrimento del testo
+- Funzione di zoom per tutte le immagini
 
