@@ -5,7 +5,7 @@
 <p style="text-align: center">Florian Bassani</p>
 <br /><br />
 <p style="text-align: center">
-	<img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 80px" /><img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 80px" />
+	<img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 240px" />
 </p>
 <br /><br />
 <p style="text-align: center"><h1 style="text-align: center">La pirateria musicale in Ticino durante il Risorgimento</h1></p>
