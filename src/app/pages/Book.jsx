@@ -139,6 +139,32 @@ const hasZoom = DOMnode => {
     return true;
 };
 
+const handleNotePopover = e => {
+    e.preventDefault();
+
+    const popovers = document.getElementsByClassName('notePopover');
+    Array.from(popovers).forEach(e => e.remove());
+
+    const href = e.currentTarget.href;
+    const id = href.substring(href.indexOf('#') + 1);
+
+    const noteBody = document.getElementById(id).querySelector('.noteBody');
+
+    const wrapper = e.currentTarget.parentElement;
+
+    wrapper.style = 'position: relative';
+
+    const popover = document.createElement('div');
+    popover.classList.add('notePopover');
+    popover.innerHTML = noteBody.innerHTML;
+
+    wrapper.appendChild(popover);
+
+    popover.addEventListener('click', e => e.currentTarget.remove(), false);
+
+    // console.log(id, noteBody.innerHTML);
+};
+
 /**
  * Init event handlers on imported DOM
  */
@@ -150,6 +176,10 @@ const initEventHandlers = () => {
     // disable <a class="mergeformat">...</a> click
     const mergeformats = document.getElementsByClassName('mergeformat');
     Array.from(mergeformats).forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); }, false));
+
+    // init note popover on click
+    const notelinks = document.getElementsByClassName('notelink');
+    Array.from(notelinks).forEach(a => a.addEventListener('click', handleNotePopover, false));
 
 };
 
