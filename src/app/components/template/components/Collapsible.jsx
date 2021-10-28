@@ -45,8 +45,6 @@ const Collapsible = props => {
         headerClassNames.push('collapsible-header__loading');
     }
 
-    console.log(headerClassNames);
-
     return (
         <div className={classNames.join(' ')}>
             <div className={headerClassNames.join(' ')} onClick={toggleCollapsed}>
