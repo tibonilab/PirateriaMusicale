@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 
+
 import HTMLfile from '../../../dataset/output.html';
 
 import Template from '../components/template/Template.jsx';
@@ -198,6 +199,8 @@ const TestHtml = () => {
     const [leftSideSize, setLeftSideSize] = useState(window.outerWidth >= 1440 ? 60 : 100);
     const [initialPageURI, setInitialPageURI] = useState();
 
+    const [content, setContent] = useState(false);
+
     const onHashChange = () => {
         if (currentHash) {
             anchorClickHandler(currentHash, highlightTerm);
@@ -296,13 +299,25 @@ const TestHtml = () => {
 
     useEffect(onHashChange, [currentHash]);
 
+    // useEffect(() => {
+    //     if (!didMount) {
+    //         setCurrentHashByWindowHash();
+    //         initEventHandlers();
+    //         fetchHighlightTerm();
+    //     }
+    // }, [didMount]);
+
     useEffect(() => {
-        if (!didMount) {
-            setCurrentHashByWindowHash();
-            initEventHandlers();
-            fetchHighlightTerm();
+        if (didMount && !content) {
+            setContent(parsedHTML);
+
+            setTimeout(() => {
+                setCurrentHashByWindowHash();
+                initEventHandlers();
+                fetchHighlightTerm();
+            }, 200);
         }
-    }, [didMount]);
+    });
 
     return (
         <Template>
@@ -319,14 +334,13 @@ const TestHtml = () => {
                     onScroll={onScrollHtmlHandler}>
                     <div
                         id="scroller-content"
-                        dangerouslySetInnerHTML={{ __html: parsedHTML }}
-                    >
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: content || '<div style="display:flex; height: 90vh; width: 100%; align-items: center; justify-content: center;">Caricamento in corso...</div>' }}
+                    />
                 </div>
 
-            </div>
+            </div >
 
-        </Template>
+        </Template >
     );
 };
 
