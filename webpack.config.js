@@ -89,7 +89,7 @@ module.exports = environment => ({
             JSON_BASE_SERVER: environment.dev
                 ? JSON.stringify('') // leave this empty: it would be managed by the dev server proxy (see above)
                 : environment.production
-                    ? JSON.stringify('http://pirateriamusicale-api.rism.digital')   // production endpoint
+                    ? JSON.stringify('//pirateriamusicale-api.rism.digital')   // production endpoint
                     : JSON.stringify('https://rism-bassani-search.altibo.club'),     // staging endpoint
 
             MEDIA_ENDPOINT: environment.dev
