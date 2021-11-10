@@ -1,28 +1,17 @@
-## Florian Bassani, La pirateria musicale in Ticino durante il Risorgimento: Studi e documentazioni sulle attività clandestine degli editori Ricordi e Lucca in territorio svizzero.
+## Florian Bassani <br>La pirateria musicale in Ticino durante il Risorgimento <br>Studi e documentazioni sulle attività clandestine <br>degli editori Ricordi e Lucca in territorio svizzero.
 
 Lugano, 11 aprile 2021
 
 Alla memoria di Padre Callisto Caldelari (1934–2014)
 
 
-Il presente studio costituisce uno dei risultati di una ricerca storico-musicale, resa possibile grazie al sostengo del Cantone Ticino (Borsa di ricerca per il biennio 2018/2020).
 
-Titolo del progetto: 
+Il presente studio costituisce uno dei risultati di una ricerca storico-musicale, resa possibile grazie al sostengo del Cantone Ticino (Borsa di ricerca per il biennio 2018/2020). <br>Titolo del progetto: 
 
-*L’Euterpe ticinese di Chiasso tra arte e società, mercato e politica.*
+*L’Euterpe ticinese di Chiasso tra arte e società, mercato e politica. <br> Particolarità di una casa editrice musicale di confine durante il Risorgimento*
 
-*Particolarità di una casa editrice musicale di confine durante il Risorgimento*
+Quest'opera è distribuita con licenza [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/deed.it). <br>La pubblicazione è avvenuta nell’autunno 2021 nella serie [RISM Digital Library](https://rism.digital/it/publications/d-lib.html) con il generoso sostegno dell’associazione [Ricerche musicali nella Svizzera italiana](http://www.ricercamusica.ch/index.htm). <br>La realizzazione tecnica della versione online è stata curata da Alberto Tiboni e Rodolfo Zitellini. <br>DOI: <https://doi.org/10.5448/rism-d-lib-019> <br>Per commenti e informazioni si prega di contattare claudio.bacciagaluppi AT rism.digital.
 
-
-Quest'opera è distribuita con licenza [CC BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/4.0/deed.it).
-
-La pubblicazione è avvenuta nell’autunno 2021 nella serie [RISM Digital Library](https://rism.digital/it/publications/d-lib.html) con il generoso sostegno dell’associazione [Ricerche musicali nella Svizzera italiana](http://www.ricercamusica.ch/index.htm).
-
-La realizzazione tecnica della versione online è stata curata da Alberto Tiboni e Rodolfo Zitellini.
-
-DOI: <https://doi.org/10.5448/rism-d-lib-019>
-
-Per commenti e informazioni si prega di contattare claudio.bacciagaluppi AT rism.digital.
 
 
 ## Aiuto alla ricerca
