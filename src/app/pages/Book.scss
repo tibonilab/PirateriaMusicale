@@ -196,7 +196,7 @@
         .heading1,
         .heading1 * {
             font-size: 1.8rem !important;
-            padding-top: 2.3em;
+            padding-top: 7em;
         }
 
         .heading2,
@@ -317,7 +317,31 @@ img.loading {
     animation: pulse 1s infinite ease-in;
 }
 
+.chapter-0 {
+    .figure.nozoom {
+        &:nth-of-type(1) {
+            img {
+                max-width: 500px !important;
+                padding: 4em 0;
+            }
+        }
 
+        &:nth-of-type(3) {
+            img {
+                max-width: 660px !important;
+                padding: 6em 0;
+            }
+        }
+
+        &:nth-of-type(2) {
+            img {
+                max-width: 250px !important;
+                padding: 3em 0 6em;
+            }
+        }
+
+    }
+}
 
 .chapter-1 {
 
@@ -387,17 +411,151 @@ img.loading {
     }
 }
 
-.chapter-5 {
-    .heading2 {
-        padding-top: 6em !important;
-    }
-    
-    .heading6 {
-        padding-top: 4em !important;
-        padding-bottom: 0;
+#scroller-content {
+    .chapter-5 {
+        .heading2 {
+            padding-top: 6em !important;
+        }
+        
+        .heading6 {
+            padding-top: 4em !important;
+            padding-bottom: 0;
+
+            .notelink sup {
+                font-size: .6rem !important;
+                margin-left: 5px;
+            }
+        }
+
+        .heading7 {
+            padding: 2em 0 1em 0;
+        }
+
+        .inline-tab {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            > .numeric-value {
+                width: 100px;
+                display: inline-block;
+            }
+        }
+
+        .notes {
+            .note {
+                .noteLabel {
+                    width: 36px;
+                }
+                .noteBody {
+                    width: calc(100% - 36px);
+                }
+                > a {
+                    margin-left: 36px;
+                }
+            }
+        }
+
+        .inline-tab {
+            font-size: 10pt !important; 
+
+            > span:first-child {
+                width: 120px;
+            }
+        }
+
+        .inline-table {
+            display: flex;
+            justify-content: space-between;
+
+            padding-top: 2em;
+            margin-bottom: 1em;
+
+            > span {
+                width: 100%;
+                text-align: center;
+                text-decoration: none !important;
+                border-bottom: 1px solid #00F;
+
+                &:nth-child(1) {
+                    // width: 20%;
+                    border-bottom: 1px solid #333;
+                    text-align: left;
+                    font-size: 1.1rem !important;
+                }
+                &:nth-child(2) {
+                    // width: 26%;
+                    border-bottom: 1px solid #333;
+                    margin-right: 4%
+                }
+
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5),
+                &:nth-child(6),
+                &:nth-child(7) {
+                    width: 40%;
+                }
+            }
+        }
+
+        .inline-table-row {
+            display: flex;
+            justify-content: flex-start;
+
+            > span {
+                width: 100%;
+
+                &:nth-child(1) {
+                    margin-left: 2em;
+                    margin-right: -2em;
+                }
+            }
+        }
+
+        
     }
 }
 
+.chapter-6 {
+    .hi {
+        font-size: 11pt;
+        font-style: normal;
+    }
+
+    .heading6 {
+        padding-left: 80px;
+    }
+}
+
+#scroller-content {
+    .chapter-7,
+    .chapter-8,
+    .chapter-9 {
+        .hi {
+            font-size: 11pt;
+            font-style: normal;
+        }
+    
+        .heading6 {
+            padding-top: 7em !important;
+            padding-bottom: 1em !important;
+    
+            > span:first-child {
+                padding-right: 2em;
+            }
+
+            .notelink sup {
+                font-size: .6rem !important;
+                margin-left: 5px;
+            }
+        }
+
+        // p:not(.heading6) {
+        //     padding-left: 1em !important;
+        // }
+    }
+}
 
 
 .spacer {
@@ -406,4 +564,46 @@ img.loading {
 
 .notes {
     margin-top: 6em;
+
+    .note {
+        display: flex;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        flex-wrap: wrap;
+        text-indent: 0;
+        margin: 0;
+        padding-bottom: 2em;
+
+        .noteLabel {
+            display: block;
+            width: 30px;
+            padding-top: 6px;
+        }
+
+        .noteBody {
+            width: calc(100% - 30px);
+        }
+
+        > a {
+            display: block;
+            width: 100%;
+            margin-left: 30px;
+        }
+    }
+}
+
+.text-center {
+    text-align: left;
+    max-width: 560px !important;
+    margin: 2em auto !important;
+
+    p {
+        padding: 0;
+
+        &:first-child {
+            text-indent: 2em;
+        }
+    }
 }
