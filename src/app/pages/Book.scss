@@ -513,6 +513,74 @@ img.loading {
             }
         }
 
+        .table {
+            &-quantitativi {
+                margin-bottom: 9em;
+                border-collapse: collapse;
+                width: 100%;
+
+
+                td {
+                    padding-top: .5em;
+                    border: 0;
+                    text-align: center;
+
+                    color: blue;
+
+
+                    &:nth-child(1) {
+                        padding-left: 1em;
+                        color:#000;
+                    }
+
+                    &:nth-child(1),
+                    &:nth-child(2) {
+                        text-align: left;
+                        width: 27%;
+                    }
+                }
+
+                tr:last-child td {
+                    font-weight: bold;
+                }
+            }
+
+
+            &-row {
+                &-head {
+
+                    color: blue;
+
+                    td {
+                        padding-top: 3.5em;
+                        border-bottom: 1px solid blue;
+                        // height: 3.6em;
+                        // vertical-align: bottom;
+
+                        &:nth-child(1) {
+                            color: #000;
+                            padding-left: 0;
+                        }
+
+                        &:nth-child(1),
+                        &:nth-child(2) {
+                            font-weight: 900;
+                            border-bottom: 1px solid #000;
+                            text-align: left;
+                            font-size:1.2rem;
+                        }
+
+                        &:nth-child(2) {
+                            display: table;
+                            margin-top: 3.5em;
+                            width: calc(100% - 2em);
+                            color: blue;
+                        }
+                    }
+
+                }
+            }
+        }
         
     }
 }
