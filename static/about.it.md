@@ -32,3 +32,11 @@ Qui si trova l’intero libro da sfogliare. Funzionalità:
 - Navigazione attraverso il sommario (nella barra a scomparsa)
 - Scorrimento del testo
 - Funzione di zoom per tutte le immagini
+
+
+
+## Funzionalità di visualizzazione
+- Fare clic sulla freccetta nera nella schermata ‘Consulta il libro’ mostra e nasconde il sommario
+- Fare clic sul numero di una nota a pie’ di pagina apre una finestra pop-up, un clic sopra di essa la chiude di nuovo
+- Fare clic su un’immagine apre una finestra di ingrandimento
+- Fare clic su un rimando interno a un altro capitolo (evidenziati in grassetto blu) apre il punto d’arrivo del riferimento in un nuovo tab del browser
