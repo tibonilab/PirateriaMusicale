@@ -65,6 +65,35 @@
             font-size: .6rem !important;
         }
 
+        .table {
+            &-documents {
+                width: 100%;
+                padding: 2em 0;
+
+                td {
+                    vertical-align:  top;
+                    width: 50%;
+
+                    &:first-child {
+                        padding-right: 2em;
+                    }
+
+                    &:last-child {
+                        padding-left: 2em;
+                    }
+                }
+            }
+        }
+
+        .small-right-caption {
+            padding-bottom: 2.8em;
+
+            > p {
+                padding: 0;
+                line-height: .9rem;
+            }
+        }
+
         .notePopover {
             position: absolute;
             top: 0;
@@ -118,10 +147,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            // flex-wrap: wrap;
+            margin-top: 3em !important;
 
             > p {
                padding: 0; 
+            }
+
+            &-column {
+                flex-direction: column;
+                // flex-wrap: wrap;
+                max-width: 600px;
+                margin: 0 auto;
             }
 
             &:not(.nozoom) {
@@ -133,6 +169,7 @@
                     display: inline-block;
                     margin: 1.5em 1em 3em 1em;
                     pointer-events: none;
+                    width: auto;
 
                     &:after {
                         display: block;
@@ -598,6 +635,41 @@ img.loading {
         }
         
     }
+
+    .chapter-11 {
+        .inline-tab {
+            font-size: 10pt !important; 
+
+            display: table;
+
+            > span:first-child {
+                width: 170px;
+                display: table-cell;
+
+                &.heading4 {
+                    font-size: 11pt !important;
+                    padding: 0;
+                }
+            }
+        }
+
+        .heading5 {
+            padding: 5em 0 1em 0;
+        }
+
+        .heading4 {
+            font-size: 11pt !important;
+            padding: 0;
+        }
+
+        .heading6 {
+            padding: 1.4em 0 0 0 !important;
+
+            span {
+                font-size: 1rem !important;
+            }
+        }
+    }
 }
 
 .chapter-6 {
@@ -679,6 +751,10 @@ img.loading {
                 font-size: .6rem !important;
                 margin-left: 5px;
             }
+        }
+
+        .heading2 {
+            padding-top: 10em !important;
         }
 
         // p:not(.heading6) {
