@@ -14,7 +14,7 @@ const KEY_SUFFIX = '-service-storage';
  */
 export const useStateWithSession = (initialValue, key, keyPrefix) => {
 
-    const storage = window.sessionStorage;
+    const storage = window.localStorage;
     const storageKey = `${keyPrefix ? `${keyPrefix}-` : ''}${key}${KEY_SUFFIX}`;
 
     const readDataFromSession = () => {
