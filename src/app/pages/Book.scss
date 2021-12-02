@@ -1,3 +1,18 @@
+#current-nav {
+    padding: 1em 0;
+    text-align: center;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #efefef;
+    position: relative;
+    z-index: 999999999;
+    height: 50px;
+    font-size: .9rem;
+    font-weight: bolder;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
 #scroller {
     overflow-y: auto;
     overflow-x: hidden;

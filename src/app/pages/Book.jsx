@@ -5,15 +5,18 @@ import HTMLfile from '../../../dataset/output.html';
 
 import Template from '../components/template/Template.jsx';
 
-import Diva from '../components/wrappers/Diva.jsx';
+// import Diva from '../components/wrappers/Diva.jsx';
 
-import { PrimaryButtonSmall } from '../components/template/components/Buttons.jsx';
-import Select from '../components/form/Select.jsx';
-import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
+// import { PrimaryButtonSmall } from '../components/template/components/Buttons.jsx';
+// import Select from '../components/form/Select.jsx';
+// import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 
 import { useDidMount } from '../hooks/useDidMount';
 
 import './Book.scss';
+
+import toc from '../../../dataset/toc.json';
+
 
 import AnalysisContext from '../context/analysisContext';
 import customContext from '../context/customContext';
@@ -190,7 +193,7 @@ const parsedHTML = parseHTML();
 
 const TestHtml = () => {
 
-    const { isContextBarVisible, setActiveChapter } = useContext(AnalysisContext);
+    const { isContextBarVisible, setActiveChapter, activeChapter } = useContext(AnalysisContext);
 
     const { highlightTerm, setHighlightTerm } = useContext(customContext);
 
@@ -268,6 +271,8 @@ const TestHtml = () => {
             }
         }
 
+        console.log(currentPage,);
+
         setActiveChapter(currentPage);
     };
 
@@ -328,6 +333,12 @@ const TestHtml = () => {
             </div>
 
             <div style={{ display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible && !isMobile ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
+
+                {toc.index.group[0].group[activeChapter - 1] && (
+                    <div id="current-nav">
+                        {toc.index.group[0].group[activeChapter - 1].name}
+                    </div>
+                )}
 
                 <div
                     id="scroller"
