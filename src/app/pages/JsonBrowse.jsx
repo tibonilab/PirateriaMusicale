@@ -49,7 +49,7 @@ const JsonBrowse = () => {
     const isLoadingRelated = (key, name) => loadingRelated && loadingRelated.params.key == key && loadingRelated.params.name == name;
 
     return (
-        <Template hiddenContextBar>
+        <Template hiddenContextBar boxedCentered>
             <form style={{ marginTop: '.5em', marginBottom: '2em' }} onSubmit={(e) => { e.preventDefault(); performBrowse(selectedIndex); }}>
                 <FlexWrapper>
                     <Select

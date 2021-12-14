@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useDidMount } from '../hooks/useDidMount';
 
 import { Link } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ import FlexWrapper from '../components/template/components/FlexWrapper.jsx';
 import ActionLink from '../components/template/components/ActionLink.jsx';
 import Loading from '../components/template/components/Loading.jsx';
 
-import { PrimaryButton } from '../components/template/components/Buttons.jsx';
+import { PrimaryButton, SecondaryButton } from '../components/template/components/Buttons.jsx';
 
 import { t } from '../i18n';
 
@@ -35,11 +36,23 @@ const JsonSearch = () => {
         setHighlightTerm,
         searchResults,
         performSearch,
-        loadingSearch
+        loadingSearch,
+        resetSearch
     } = useContext(CurstomContext);
 
+    const didMount = useDidMount();
+
+    let input;
+
+    const resetForm = (e) => {
+        resetSearch(e);
+        input.setFocus();
+    };
+
+    useEffect(() => !didMount && input.setFocus());
+
     return (
-        <Template hiddenContextBar>
+        <Template hiddenContextBar boxedCentered>
             <form style={{ marginTop: '.5em', marginBottom: '2em' }} onSubmit={(e) => { e.preventDefault(); performSearch(searchTerm); setHighlightTerm(searchTerm); }}>
                 <FlexWrapper>
                     <Input
@@ -48,8 +61,10 @@ const JsonSearch = () => {
                         placeholder={t('search.form.search_placeholder')}
                         value={searchTerm}
                         onChangeHandler={setSearchTerm}
+                        ref={c => input = c}
                     />
                     <PrimaryButton type="submit" disabled={!/\S/.test(searchTerm) || loadingSearch}>{t(`search.form.${loadingSearch ? 'loading' : 'submit'}`)}</PrimaryButton>
+                    <SecondaryButton onClick={resetForm} type="reset" disabled={!/\S/.test(searchTerm)}>{t('search.form.reset')}</SecondaryButton>
                 </FlexWrapper>
             </form>
             <div style={{ marginBottom: '2em' }}>
@@ -69,7 +84,7 @@ const JsonSearch = () => {
                                     {getHighlightedText(result.transcription, highlightTerm)}
                                 </div>
                             </div>
-                            <Link to={`/book#${result.ref}`} target="_blank" onClick={() => { localStorage.setItem('temp-key', highlightTerm); }}>{t('search.actions.go')}</Link>
+                            <Link to={`/book#${result.ref}`} /*target="_blank"*/ onClick={() => { localStorage.setItem('temp-key', highlightTerm); }}>{t('search.actions.go')}</Link>
                         </div>
 
 

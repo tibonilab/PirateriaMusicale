@@ -27,6 +27,7 @@
         "form": {
             "search_placeholder": "Inserisci qui i tuoi termini di ricerca...",
             "submit": "Ricerca",
+            "reset": "Cancella",
             "loading": "Caricamento.."
         },
         "actions": {

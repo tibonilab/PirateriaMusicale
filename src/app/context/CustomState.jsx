@@ -62,6 +62,12 @@ const CustomState = props => {
         });
     };
 
+    const resetSearch = (e) => {
+        console.log('resetSearch');
+        e && e.preventDefault();
+        setSearchResults([]);
+        setSearchTerm('');
+    };
     return (
         <CurstomContext.Provider
             value={{
@@ -76,7 +82,8 @@ const CustomState = props => {
                 loadingRelated,
                 browseError,
                 searchTerm, setSearchTerm,
-                highlightTerm, setHighlightTerm
+                highlightTerm, setHighlightTerm,
+                resetSearch
             }}
         >
             {props.children}

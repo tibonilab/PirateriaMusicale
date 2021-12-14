@@ -187,8 +187,6 @@ const initEventHandlers = () => {
 
 };
 
-console.log(HTMLfile.replace('a', 'b'));
-
 const parseHTML = () => HTMLfile.replace(/\(\(REPLACE_WITH_MEDIA_ENDPOINT\)\)/g, MEDIA_ENDPOINT);
 
 const parsedHTML = parseHTML();
@@ -334,7 +332,7 @@ const TestHtml = () => {
                 </figure>
             </div>
 
-            <div style={{ display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible && !isMobile ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
+            <div style={{ zIndex: 3, display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible && !isMobile ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
 
                 {toc.index.group[0].group[activeChapter - 1] && (
                     <div id="current-nav">
@@ -347,7 +345,7 @@ const TestHtml = () => {
                     onScroll={onScrollHtmlHandler}>
                     <div
                         id="scroller-content"
-                        dangerouslySetInnerHTML={{ __html: content || '<div style="display:flex; height: 90vh; width: 100%; align-items: center; justify-content: center;">Caricamento in corso...</div>' }}
+                        dangerouslySetInnerHTML={{ __html: content || '<div style="display:flex; height: 90vh; width: 100%; align-items: center; justify-content: center;"><div class="collapsible-header collapsible-header__loading"><div class="collapsible-header-loading"></div> <span style="display: inline-block; margin: 11px 7px; font-size: .8rem;">caricamento in corso..</span></div></div>' }}
                     />
                 </div>
 
