@@ -187,7 +187,9 @@ const initEventHandlers = () => {
 
 };
 
-const parseHTML = () => HTMLfile.replaceAll('((REPLACE_WITH_MEDIA_ENDPOINT))', MEDIA_ENDPOINT);
+console.log(HTMLfile.replace('a', 'b'));
+
+const parseHTML = () => HTMLfile.replace(/\(\(REPLACE_WITH_MEDIA_ENDPOINT\)\)/g, MEDIA_ENDPOINT);
 
 const parsedHTML = parseHTML();
 
