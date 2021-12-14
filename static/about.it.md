@@ -12,9 +12,9 @@ Il presente studio è il frutto di una ricerca storico-musicale resa possibile g
 
 
 
-:\*\*\*\*\*:
+<div class="text-center">*****</div>
 
 
 
-:Alla memoria di Padre Callisto Caldelari (1934–2014):
+<div class="text-center">Alla memoria di Padre Callisto Caldelari (1934–2014)</div>
 
