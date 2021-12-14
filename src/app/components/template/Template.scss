@@ -14,7 +14,7 @@
                 height: 70px;
                 border-bottom:2px solid $light-gray-e;
                 background: $white;
-                z-index: 2;
+                z-index: 4;
                 padding: 1em;
                 display: flex;
                 align-items: center;
@@ -40,7 +40,7 @@
                 width: 70px;
                 bottom: 0;
                 background: $navbar-back-color;
-                z-index: 2;
+                z-index: 5;
 
                 .clearButton {
                     &-root {
@@ -106,7 +106,7 @@
                 background: $light-gray-e;
                 bottom: 0;
                 padding: 2em;
-                z-index: 1;
+                z-index: 4;
                 transition: left .25s ease-in-out;
 
                 .toc-scroller {
@@ -220,6 +220,11 @@
                 }
             }
         }
+
+        &__boxedCentered {
+            max-width: 1180px;
+            margin: auto;
+        }
     }
 }
 
@@ -240,4 +245,9 @@ a:active {
 
 .small {
     font-size: .8rem;
+}
+
+
+.text-center {
+    text-align: center;
 }

@@ -21,6 +21,10 @@ const Template = props => {
         contentClassNames.push('template-content__with-contextBar');
     }
 
+    if (props.boxedCentered != undefined) {
+        contentClassNames.push('template-content__boxedCentered');
+    }
+
     return (
         <div className="template-root">
             <Navbar />

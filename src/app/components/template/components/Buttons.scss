@@ -1,33 +1,55 @@
 @import 'src/app/components/template/Palette.scss';
 
-.primaryButton {
+.primaryButton,
+.secondaryButton {
 
     &-root {
         border: none;
         padding: 1em 2em;
-        background: $action-button-background;
+        margin: 0 2px;
         cursor: pointer;
-        color: $white;
         text-transform: uppercase;
         border-radius: .25rem;
         outline: none;
-        font-family: 'Lato', Arial, Helvetica, sans-serif;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+
+        &:disabled {
+            background: $light-gray-a !important;
+            color: $white;
+            cursor: not-allowed !important;
+        }
+    }
+}
+
+.primaryButton {
+
+    &-root {
+        background: $action-button-background;
+        color: $white;
 
         &:hover,
         &:active {
             background: $active-action-button-background;
         }
-
-        &:disabled {
-            background: $light-gray-a;
-            cursor: not-allowed;
-        }
-
     }   
 
     &-small {
         padding: .65em 1.2em;
         font-size: 80%;
+    }
+
+}
+
+.secondaryButton {
+
+    &-root {
+        color: $white;
+        background: $secondary-button-background;
+
+        &:hover,
+        &:active {
+            background: $active-secondary-button-background;
+        }
     }
 
 }

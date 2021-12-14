@@ -9,12 +9,16 @@
             color: #525252 !important;
         }
 
+        > a {
+            padding: 0 .5em !important;
+        }
+
         &:after {
             display: block;
             content: "";
             position: absolute;
             right: 8px;
-            top: 6px;
+            top: 10px;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-top: 5px solid #000000;
@@ -39,7 +43,7 @@
         margin: 0;
         min-width: 180px;
         right:0;
-        top: 40px;
+        top: 36px;
         box-shadow: 3px 2px 12px #ccc;
         background: #fff;
 
@@ -51,9 +55,10 @@
                 border-bottom: 0;
             }
 
-            a, span {
-                padding: 1em .5em;
-                display: block;
+            > a {
+                padding: 1em 1.5em !important;
+                display: inline-block;
+                width: 100%;
 
                 &:hover {
                     background: #f6f6f6;

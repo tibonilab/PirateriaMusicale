@@ -10,6 +10,8 @@ export default class Input extends Component {
         this.state = {
             value: props.value || ''
         };
+
+        this.ref;
     }
 
     componentDidUpdate(prevProps) {
@@ -54,6 +56,10 @@ export default class Input extends Component {
         }
     }
 
+    setFocus() {
+        this.ref.focus();
+    }
+
     render() {
         const classNames = ['input-root'];
 
@@ -70,8 +76,8 @@ export default class Input extends Component {
                 onBlur={this.onBlurHandler.bind(this)}
                 onKeyDown={this.onKeyDownHandler.bind(this)}
                 placeholder={this.props.placeholder}
+                ref={c => this.ref = c}
             />
         );
     }
-
 }

@@ -8,18 +8,22 @@
 
     &-input {
         width: 100%;
-        background: $action-button-background;
+        // background: $action-button-background;
         border: none;
-        padding: 1rem 2rem;
-        text-transform: uppercase;
-        color: $white;
+        padding: .5rem 1rem;
+        // text-transform: uppercase;
+        // color: $white;
         border-radius: .25rem;
         outline: none;
-        font-family: 'Lato', Arial, Helvetica, sans-serif;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         cursor: pointer;
+        font-size: 1.2rem;
+        line-height: 0;
 
         option {
-            font-family: 'Lato', Arial, Helvetica, sans-serif;
+            background: transparent;
+            padding: 1em 0;
+            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         }
     }
 }
