@@ -13,7 +13,7 @@ Realizzazione tecnica curata da Alberto Tiboni e Rodolfo Zitellini.
 <br />DOI: <a href="https://doi.org/10.5448/rism-d-lib-019">https://doi.org/10.5448/rism-d-lib-019</a>
 <br />
 <br />
-Per commenti e informazioni si prega di rivolgersi a: d-lib\[at\]rism.digital.
+Per commenti e informazioni si prega di rivolgersi a: d-lib(at)rism.digital.
 <br />
 <br />
 Il presente studio è il frutto di una ricerca storico-musicale resa possibile grazie al sostegno del Cantone Ticino (Borsa di ricerca per il biennio 2018/2020). 
