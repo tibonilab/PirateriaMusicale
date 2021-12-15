@@ -39,19 +39,30 @@ const highlightItem = (id, text) => {
 
 
 const anchorClickHandler = (id, highlightTerm) => {
-    const element = document.getElementById(id);
+    let element = document.getElementById(id);
 
     // const position = id.includes('d1e') ? 'center' : 'start';
-    const position = 'start';
+    let position = 'start';
+
+    const parent = element.parentElement;
+
+    console.log(parent, parent.className, parent.className.includes('figure-caption'));
+
+    if (parent && parent.className.includes('figure-caption')) {
+        position = 'end';
+        element = parent;
+    }
 
     highlightItem(id, highlightTerm);
 
     if (element) {
-        element.scrollIntoView({
-            behavior: 'auto',
-            block: position,
-            inline: position
-        });
+        setTimeout(() => {
+            element.scrollIntoView({
+                behavior: 'auto',
+                block: position,
+                inline: position
+            });
+        }, 1);
 
         document.getElementById('scroller').scrollLeft = 0;
     }

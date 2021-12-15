@@ -26,6 +26,7 @@ export const TocContextBar = ({ visible, toggleBar }) => {
                     toc.map((e, k) => typeof e.link === 'string'
                         ? (
                             <Collapsible
+                                key={e.name}
                                 highlight={activeChapter == k + 1}
                                 header={
                                     <a href={`/book#${e.link}`}>

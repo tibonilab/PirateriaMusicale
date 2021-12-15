@@ -116,7 +116,7 @@
                 padding: 5px;
                 position: absolute;
                 left: -45px;
-                bottom: 8px;
+                bottom: 11px;
                 transform: rotate(-45deg);
 
             }
@@ -226,17 +226,26 @@
             }
 
             &-caption {
-                padding-bottom: 6em;
+                margin-bottom: 3em;
+                padding-bottom: 3em;
                 margin-top: -1.5em;
-
-                > p:first-child > span {
-                    font-size: 12pt !important;
-                    font-weight: bold;
-                }
 
                 p {
                     padding: 0;
                 }
+
+                > p:first-child {
+                    // padding-top: 1em;
+
+                    > span {
+                        font-size: 12pt !important;
+                        font-weight: bold;
+                        display: block;
+                        padding-bottom:.4em;
+                        margin-bottom: -.4em;
+                    }
+                }
+                
             }
         }
 
@@ -244,40 +253,46 @@
         .heading1,
         .heading1 * {
             font-size: 1.6rem !important;
-            padding-top: 7em;
+            padding-top: 1em;
+            margin-top: 6em
         }
 
         .heading2,
         .heading2 * {
             font-size: 1.4rem !important;
-            padding-top: 1.8em;
+            padding-top: 1em;
+            margin-top: .8em;
             color: #000 !important;
         }
 
         .heading3,
         .heading3 * {
             font-size: 1.3rem !important;
-            padding-top: 1.4em;
+            padding-top: 1em;
+            margin-top: .4em;
             color: #44546A;
         }
 
         .heading4,
         .heading4 * {
             font-size: 1.3rem !important;
-            padding-top: 1.4em;
+            padding-top: 1em;
+            margin-top: .4em;
             display: inline-block
         }
 
         .heading5,
         .heading5 * {
             font-size: 1.3rem !important;
-            padding-top: 1.4em;
+            padding-top: 1em;
+            margin-top: .4em;
         }
 
         .heading6,
         .heading6 * {
             font-size: 1.2rem !important;
-            padding-top: 1.2em;
+            padding-top: 1em;
+            margin-top: .2em;
         }
     }
 }
@@ -397,7 +412,7 @@ img.loading {
         margin-top: 3em;
     }
 
-    p {
+    p:not(.heading1) {
         padding: .8em 0;
     }
 
@@ -437,7 +452,7 @@ img.loading {
     &-3,
     &-4 {
         .heading3 {
-            padding: 2em 0;
+            margin: 2em 0;
         }
     }
 }
@@ -451,12 +466,12 @@ img.loading {
 
 .chapter-4 {
     .heading6 {
-        padding-top: 5em !important;
-        padding-bottom: 0;
+        margin-top: 5em !important;
+        padding-bottom: .3em;
     }
 
     .blockquote {
-        padding: 1em 0 2em 0;
+        margin: 1em 0 2em 0;
         margin-right: 0;
     }
 }
@@ -464,11 +479,12 @@ img.loading {
 #scroller-content {
     .chapter-5 {
         .heading2 {
-            padding-top: 6em !important;
+            margin-top: 6em !important;
+            padding-bottom: .2em;
         }
         
         .heading6 {
-            padding-top: 4em !important;
+            margin-top: 4em !important;
             padding-bottom: 0;
 
             .notelink sup {
@@ -477,8 +493,12 @@ img.loading {
             }
         }
 
+        .heading3{
+            padding-bottom: .3em;
+        }
+
         .heading7 {
-            padding: 2em 0 1em 0;
+            margin: 2em 0 1em 0;
         }
 
         .inline-tab {
@@ -652,7 +672,8 @@ img.loading {
         }
 
         .heading5 {
-            padding: 5em 0 1em 0;
+            margin: 5em 0 1em 0;
+            padding-bottom:.4em;
         }
 
         .heading4 {
@@ -661,7 +682,7 @@ img.loading {
         }
 
         .heading6 {
-            padding: 1.4em 0 0 0 !important;
+            // padding: 1.4em 0 0 0 !important;
 
             span {
                 font-size: 1rem !important;
@@ -679,12 +700,13 @@ img.loading {
     .heading5,
     .heading2,
     .heading3 {
-        padding-top: 6em !important;
+        margin-top: 6em !important;
+        padding-bottom: .2em;
     }
 
     .heading6 {
         padding-left: 110px;
-        padding-top: 3em !important;
+        margin-top: 3em !important;
     }
 
 
@@ -738,8 +760,9 @@ img.loading {
         }
     
         .heading6 {
-            padding-top: 7em !important;
-            padding-bottom: 1em !important;
+            margin-top: 7em !important;
+            margin-bottom: .7em !important;
+            padding-bottom: .3em;
     
             > span:first-child {
                 padding-right: 2em;
@@ -752,7 +775,8 @@ img.loading {
         }
 
         .heading2 {
-            padding-top: 10em !important;
+            margin-top: 10em !important;
+            padding-bottom: .2em;
         }
 
         // p:not(.heading6) {
