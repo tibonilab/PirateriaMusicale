@@ -151,6 +151,7 @@ const hasZoom = DOMnode => {
     return true;
 };
 
+
 const handleNotePopover = e => {
     e.preventDefault();
 
@@ -166,9 +167,12 @@ const handleNotePopover = e => {
 
     wrapper.style = 'position: relative';
 
+    console.log(wrapper.offsetLeft, document.getElementById('scroller-content').offsetLeft);
+
     const popover = document.createElement('div');
     popover.classList.add('notePopover');
     popover.innerHTML = noteBody.innerHTML;
+    popover.style = `left: ${document.getElementById('scroller-content').offsetLeft - wrapper.offsetLeft + 35}px`;
 
     wrapper.appendChild(popover);
 
