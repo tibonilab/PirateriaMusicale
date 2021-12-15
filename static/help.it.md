@@ -4,8 +4,8 @@ La navigazione all’interno del volume avviene con gli strumenti Consulta, Cerc
 
 ### Consulta il libro
 Il tasto ‘Consulta il libro’ permette di navigare nel volume con le seguenti funzionalità:
-•	Navigazione attraverso il sommario (nella barra a scomparsa) 
-•	Scorrimento libero del testo (per la guida destra) 
+- Navigazione attraverso il sommario (nella barra a scomparsa) - Scorrimento libero del testo (per la guida destra) 
+
 La funzione ‘Naviga per Sommario’ (nella barra attivabile con la freccia nera accanto al tasto ‘Consulta il libro’) è fondamentale per l’orientamento. Qui, tramite i titoli dei singoli capitoli e sottocapitoli, il lettore può facilmente saltare da una parte del volume all’altra. 
 
 I materiali di documentazione, raccolti nei capitoli da **4. Carteggio** a **11. Abbreviazioni - Bibliografia**, si raggiungono per via diretta sia attraverso il Sommario, sia tramite i rispettivi links di riferimento inseriti nel corso del volume. 
