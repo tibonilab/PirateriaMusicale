@@ -21,7 +21,7 @@ const getHighlightedText = (text, highlight) => {
     // Split on highlight term and include term into parts, ignore case
     const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
     return <span> {parts.map((part, i) =>
-        <span key={i} style={part.toLowerCase() === highlight.toLowerCase() ? { background: 'yellow' } : {}}>
+        <span key={i} style={part.toLowerCase() === highlight.toLowerCase() ? { background: 'pink' } : {}}>
             {part}
         </span>)
     } </span>;
@@ -75,7 +75,7 @@ const JsonSearch = () => {
                     ? <Loading />
                     : searchResults && searchResults.map((result, key) => (
 
-                        <div key={key} style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '.5em' }}>
+                        <div key={key} style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1.5em', marginBottom: '1em', borderBottom: '1px dotted #efefef' }}>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', width: 'calc(100% - 100px)' }}>
                                 <div style={{ width: '100px', paddingRight: '1em' }}>
                                     <h5>{key + 1}</h5>

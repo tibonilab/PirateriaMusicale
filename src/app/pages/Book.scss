@@ -149,7 +149,7 @@
                 // border: 15px solid yellow;
                 // border-left: 10px solid transparent;
                 // border-bottom: 10px solid transparent;
-                border: solid #c3c3c3;
+                border: solid #ccc;
                 border-width: 0 5px 5px 0;
                 display: inline-block;
                 padding: 5px;
@@ -422,7 +422,9 @@ img.loading {
 .chapter-0 {
     .figure.nozoom {
 
-        width: 100%;
+        img {
+            width: 100%;
+        }
 
         &:nth-of-type(1) {
             img {
