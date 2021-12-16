@@ -31,7 +31,8 @@ const highlightItem = (id, text) => {
         element.classList.add('highlight');
 
         if (/\S/.test(text)) {
-            element.innerHTML = element.innerHTML.replace(/\s\s+/g, ' ').replace(new RegExp(`(${text})`, 'gi'), '<span style="background: pink">$1</span>');
+            var specials = new RegExp('[.*+?|()\\[\\]{}\\\\]', 'g');
+            element.innerHTML = element.innerHTML.replace(/\s\s+/g, ' ').replace(new RegExp(`(${text.replace(specials, '\\$&')})`, 'gi'), '<span style="background: pink">$1</span>');
         }
     }
 
