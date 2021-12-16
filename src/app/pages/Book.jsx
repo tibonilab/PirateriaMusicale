@@ -40,13 +40,9 @@ const highlightItem = (id, text) => {
 
 const anchorClickHandler = (id, highlightTerm) => {
     let element = document.getElementById(id);
-
-    // const position = id.includes('d1e') ? 'center' : 'start';
     let position = 'start';
 
-    const parent = element.parentElement;
-
-    console.log(parent, parent.className, parent.className.includes('figure-caption'));
+    const parent = element && element.parentElement;
 
     if (parent && parent.className.includes('figure-caption')) {
         position = 'end';
@@ -210,7 +206,7 @@ const TestHtml = () => {
     const { highlightTerm, setHighlightTerm } = useContext(customContext);
 
     const [currentHash, setCurrentHash] = useState();
-    const [isMobile, setIsMobile] = useState(window.outerWidth < 1440);
+    const [isMobile, setIsMobile] = useState(window.outerWidth < 970);
     const [leftSideSize, setLeftSideSize] = useState(window.outerWidth >= 1440 ? 60 : 100);
     const [initialPageURI, setInitialPageURI] = useState();
 
@@ -287,9 +283,9 @@ const TestHtml = () => {
     };
 
     const updateLayout = () => {
-        setIsMobile(window.outerWidth < 1440);
+        setIsMobile(window.outerWidth < 970);
 
-        if (window.outerWidth >= 1440) {
+        if (window.outerWidth >= 970) {
             setLeftSideSize(60);
         } else {
             setLeftSideSize(100);
@@ -334,6 +330,16 @@ const TestHtml = () => {
         }
     });
 
+    const wrapperClassNames = ['book-wrapper'];
+
+    if (isContextBarVisible) {
+        wrapperClassNames.push('book-wrapper__with-contextBar');
+    }
+
+    if (isMobile) {
+        wrapperClassNames.push('book-wrapper__mobile');
+    }
+
     return (
         <Template>
             <div id="zoommer">
@@ -342,7 +348,7 @@ const TestHtml = () => {
                 </figure>
             </div>
 
-            <div style={{ zIndex: 3, display: 'flex', transition: 'max-width .25s ease-in-out', maxWidth: `calc(100% - ${isContextBarVisible && !isMobile ? '395px' : '75px'})`, width: '100%', position: 'fixed', height: 'calc(100vh - 73px)', margin: '-45px 0 -2em -75px' }}>
+            <div className={wrapperClassNames.join(' ')}>
 
                 <div
                     id="scroller"

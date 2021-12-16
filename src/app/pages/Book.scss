@@ -1,3 +1,40 @@
+.book {
+    &-wrapper {
+        z-index: 3;
+        display: flex; 
+        transition: max-width .25s ease-in-out;
+        max-width: calc(100% - 75px); 
+        width: 100%; 
+        position: fixed; 
+        height: calc(100vh - 73px);
+        margin: -45px 0 -2em -75px;
+
+        &__with {
+            &-contextBar {                
+                max-width: calc(100% - 495px);
+
+                .notePopover {
+                    max-width: calc(92vw - 490px) !important;
+                }
+            }
+        }
+
+        &__mobile {
+            max-width: calc(100% - 75px);
+
+            .notePopover {
+                max-width: calc(92vw - 70px) !important;
+            }
+        }
+
+
+        // @media sreen and (min-width: 1370px) {
+            right: 0;
+        // }
+    }
+}
+
+
 #current-nav {
     padding: 1em 0;
     text-align: center;
@@ -31,6 +68,8 @@
     // background: #f4f5f6;
 
     &-content {
+        // border-left: 2px solid red;
+        // border-right: 2px solid red;
         max-width: 880px;
         margin: auto;
         padding: 0 2em 40vh 2em;
@@ -110,13 +149,13 @@
                 // border: 15px solid yellow;
                 // border-left: 10px solid transparent;
                 // border-bottom: 10px solid transparent;
-                border: solid #00b5d6;
-                border-width: 0 9px 9px 0;
+                border: solid #c3c3c3;
+                border-width: 0 5px 5px 0;
                 display: inline-block;
                 padding: 5px;
                 position: absolute;
-                left: -45px;
-                bottom: 11px;
+                left: -42px;
+                bottom: 13px;
                 transform: rotate(-45deg);
 
             }
@@ -382,6 +421,9 @@ img.loading {
 
 .chapter-0 {
     .figure.nozoom {
+
+        width: 100%;
+
         &:nth-of-type(1) {
             img {
                 max-width: 500px !important;
@@ -804,7 +846,7 @@ img.loading {
         top: 0;
         margin-left: -1em;
         width: 860px !important;
-        max-width: calc(92vw - 70px) !important;
+        max-width: calc(92vw - 70px);
         background: #fff;
         padding: 1em 1.8em;
         border: 2px solid #999;
@@ -860,3 +902,13 @@ img.loading {
     }
 }
 
+
+
+
+// @media (min-width: 780px) and (max-width: 1560px) {
+//     #scroller-content {
+//         margin-right: 0;
+
+//         border-left: 2px solid orangered;
+//     }
+// }
