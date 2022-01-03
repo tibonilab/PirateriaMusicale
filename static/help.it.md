@@ -27,5 +27,5 @@ Un indice dei nomi – dei compositori e degli autori – per i capitoli **5. De
 ### Funzionalità di visualizzazione
 - Cliccando sulla freccetta nera nella schermata ‘Consulta il libro’, si mostra e nasconde il sommario.
 - Cliccando sul numero di una nota a piè di pagina, si apre una finestra pop-up, un clic sopra di essa la chiude di nuovo. 
-- Cliccando su un’immagine si apre una finestra di ingrandimento.
+- Cliccando su un’immagine che potrebbe esigere una vista ravvicinata, si apre una finestra di ingrandimento.
 - Cliccando su un rimando interno a un altro capitolo (evidenziato in grassetto blu), si apre il punto d’arrivo del riferimento in un nuovo tab del browser.
