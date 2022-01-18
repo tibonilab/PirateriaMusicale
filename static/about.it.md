@@ -1,4 +1,4 @@
-## Florian Bassani <br />La pirateria musicale in Ticino durante il Risorgimento <br />Studi e documentazioni sulle attività clandestine <br />degli editori Ricordi e Lucca in territorio svizzero
+## Florian Bassani <br />La pirateria musicale in Ticino durante il Risorgimento <br />Studi e documenti sulle attività clandestine <br />degli editori Ricordi e Lucca in territorio svizzero
 <br />
 <br />
 RISM Digital Library 2022
