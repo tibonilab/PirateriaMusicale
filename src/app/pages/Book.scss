@@ -45,7 +45,7 @@
     height: 75px;
     font-size: .9rem;
     font-weight: bolder;
-    max-width: 880px;
+    max-width: 760px;
     margin: 0 auto;
     // top: -75px;
     left: -105px;
@@ -70,7 +70,7 @@
     &-content {
         // border-left: 2px solid red;
         // border-right: 2px solid red;
-        max-width: 880px;
+        max-width: 760px;
         margin: auto;
         padding: 0 2em 40vh 2em;
         width: 100%;
@@ -100,11 +100,16 @@
         //     border-right: 1px solid #f4f5f6;
         // }
 
+        .notelink {
+            text-decoration: none;
+        }
+
         * {
             max-width: 100%;
         }
 
-        sup {
+        sup,
+        sub {
             font-size: .6rem !important;
         }
 
@@ -164,10 +169,12 @@
         .pagebreak {
             // display: none;
             opacity: 0;
+            
         }
 
         .stdheader {
-            border: none;
+            border-bottom: 1px solid #ccc;
+            padding-top: 10em;
         }
 
         .figure {
@@ -509,6 +516,27 @@ img.loading {
 }
 
 .chapter-4 {
+
+    p > b {
+        font-size: 11pt;
+    }
+
+    .small-table{
+        color: #44546A;
+        width: 370px !important;
+        font-size: 10pt;
+        margin-left: -.5em;
+        border-collapse: collapse;
+
+        td {
+            padding: 0 .5em;
+        }
+    }
+
+    .TABLE-HERE {
+        display: none;
+    }
+
     .heading6 {
         margin-top: 5em !important;
         padding-bottom: .3em;
@@ -517,6 +545,39 @@ img.loading {
     .blockquote {
         margin: 1em 0 2em 0;
         margin-right: 0;
+    }
+
+    .inline-columns {
+        padding-left: 1.5em;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 10pt !important;
+
+        &-head {
+            margin-top: 1.1em;
+        }
+
+        > span {
+            padding-right: 5px;
+
+            &:not(.numeric-value) {
+                sup {
+                    margin-left: -5px
+                }
+
+                max-width: calc(100% - 110px) !important;
+            }
+        }
+
+        > span:first-child:not(.numeric-value) {
+            padding-left: 110px;
+            display: inline-block;
+        }
+
+        > .numeric-value {
+            width: 110px;
+        }
     }
 }
 
@@ -750,7 +811,7 @@ img.loading {
 
     .heading6 {
         padding-left: 110px;
-        margin-top: 3em !important;
+        margin-top: 2.5em !important;
     }
 
 
