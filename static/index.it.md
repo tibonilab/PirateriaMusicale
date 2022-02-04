@@ -2,7 +2,7 @@
 <div class="content-container">
 <p style="text-align: center"><img src="/media/chapter-00-image1.jpg" alt="" style="max-width: 500px;"/></p>
 <br /><br />
-<p style="text-align: center">Florian Bassani</p>
+<p style="text-align: center; font-size: 1.3rem">Florian Bassani</p>
 <br /><br />
 <p style="text-align: center">
 	<img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 240px" />
