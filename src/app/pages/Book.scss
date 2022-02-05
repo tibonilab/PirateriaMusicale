@@ -174,7 +174,7 @@
 
         .stdheader {
             border-bottom: 1px solid #ccc;
-            padding-top: 10em;
+            padding-top: 12em;
         }
 
         .figure {
@@ -606,14 +606,27 @@ img.loading {
             margin: 2em 0 1em 0;
         }
 
+        .heading8 {
+            margin-top:1.5em;
+
+            > span {
+                color: #44546A !important;
+            }
+        }
+
         .inline-tab {
             display: flex;
-            align-items: center;
+            align-items: stretch;
             justify-content: flex-start;
+
+            .text-value {
+                width: calc(100% - 120px);
+
+            }
 
             > .numeric-value {
                 width: 100px;
-                display: inline-block;
+                display: block;
             }
         }
 
