@@ -600,7 +600,12 @@ img.loading {
 
         .heading3{
             padding-bottom: .3em;
-            padding-top: 5em;
+            padding-top: 3em;
+
+            .heading-spacing-top {
+                display: inline-block;
+                margin-top: 6em;
+            }
         }
 
         .heading7 {
