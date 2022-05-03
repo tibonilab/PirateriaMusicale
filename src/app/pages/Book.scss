@@ -928,6 +928,16 @@ img.loading {
 
 #scroller-content {
 
+    .chapter-7 {
+        .inline-tab {
+            display: flex;
+
+            .numeric-value {
+                width: 120px;
+            }
+        }
+    }
+
     .chapter-7,
     .chapter-8,
     .chapter-9 {
