@@ -164,8 +164,6 @@ const handleNotePopover = e => {
 
     wrapper.style = 'position: relative';
 
-    console.log(wrapper.offsetLeft, document.getElementById('scroller-content').offsetLeft);
-
     const popover = document.createElement('div');
     popover.classList.add('notePopover');
     popover.innerHTML = noteBody.innerHTML;
@@ -173,7 +171,15 @@ const handleNotePopover = e => {
 
     wrapper.appendChild(popover);
 
-    popover.addEventListener('click', e => e.currentTarget.remove(), false);
+    // popover.addEventListener('click', e => e.currentTarget.remove(), false);
+
+    const removePopover = () => {
+        popover.remove();
+        document.getElementById('scroller-content').removeEventListener('click', removePopover, true);
+    };
+
+    setTimeout(() => document.getElementById('scroller-content').addEventListener('click', removePopover, false), 1);
+
 
     // console.log(id, noteBody.innerHTML);
 };
@@ -354,9 +360,22 @@ const TestHtml = () => {
                 <div
                     id="scroller"
                     onScroll={onScrollHtmlHandler}>
+                    {!content
+                        ? (
+                            <div style={{ display: 'flex', flexDirection: 'column', height: '90vh', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                                <img src="/media/chapter-00-image1.jpg" style={{ width: '250px' }} />
+                                <div className="collapsible-header collapsible-header__loading">
+                                    <div className="collapsible-header-loading"></div>
+                                    <span style={{ display: 'inline-block', margin: '11px 7px', fontSize: '.8rem' }}>
+                                        {'caricamento in corso..'}
+                                    </span>
+                                </div>
+                            </div>
+                        )
+                        : null}
                     <div
                         id="scroller-content"
-                        dangerouslySetInnerHTML={{ __html: content || '<div style="display:flex; height: 90vh; width: 100%; align-items: center; justify-content: center;"><div class="collapsible-header collapsible-header__loading"><div class="collapsible-header-loading"></div> <span style="display: inline-block; margin: 11px 7px; font-size: .8rem;">caricamento in corso..</span></div></div>' }}
+                        dangerouslySetInnerHTML={{ __html: content || null }}
                     />
                 </div>
 
