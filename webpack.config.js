@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { hostname } = require('os');
 
 module.exports = environment => ({
     entry: path.join(__dirname, 'src', 'index.js'),
