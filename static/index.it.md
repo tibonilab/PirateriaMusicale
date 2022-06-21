@@ -1,19 +1,14 @@
 
 <div class="content-container">
-<p style="text-align: center"><img src="/media/chapter-00-image1.jpg" alt="" style="max-width: 500px;"/></p>
-<br /><br />
+<p style="text-align: center"><img src="/media/chapter-00-image1.jpg" alt="" style="max-width: 250px;"/></p>
 <p style="text-align: center; font-size: 1.3rem">Florian Bassani</p>
-<br /><br />
 <p style="text-align: center">
 	<img src="/media/chapter-00-image2.jpg" alt="" style="max-width: 240px" />
 </p>
-<br /><br />
 <p style="text-align: center"><h1 style="text-align: center">La pirateria musicale in Ticino durante il Risorgimento</h1></p>
 
 <p style="text-align: center"><h2 style="text-align: center">Studi e documenti sulle attività clandestine <br />degli editori Ricordi e Lucca in territorio svizzero</h2></p>
-
-<br /><br />
-<p style="text-align: center"><img src="/media/chapter-00-image3.jpg" alt="" style="max-width: 500px" /></p>
+<p style="text-align: center"><img src="/media/chapter-00-image3.jpg" alt="" style="max-width: 300px" /></p>
 
 <span style="font-size:10pt;color:4B5563">
 <br/><br/>

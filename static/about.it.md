@@ -5,7 +5,7 @@ RISM Digital Library 2022
 <br />
 <br />
 <p>
-<img src="/static/logo-RISM-large-ch.png" alt="" style="max-width: 80px" />
+<img src="/media/logo-RISM-large-ch.png" alt="" style="max-width: 80px" />
 </p>
 <br />
 <br />
